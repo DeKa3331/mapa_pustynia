@@ -26,45 +26,30 @@
             flex-wrap: wrap;
         }
 
-        #controls ul {
-            display: flex;
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
+        #controls .category {
+            margin: 10px;
+            cursor: pointer;
         }
 
-        #controls li {
-            margin: 0 10px;
-            cursor: pointer;
+        #controls .category label {
+            display: block;
+            margin-bottom: 5px;
         }
 
         #categories-content {
             display: flex;
+            justify-content: center;
             flex-direction: column;
             align-items: center;
             margin-top: 20px;
         }
 
-        .tab-content {
-            display: none;
+        .category-content {
+            display: none; /* Ukrywamy domyślnie wszystkie sekcje */
         }
 
-        .tab-content.active {
-            display: block;
-        }
-
-        .legend-icon {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: inline-block;
-        }
-
-        .legend-icon-square {
-            width: 30px;
-            height: 30px;
-            border-radius: 5px;
-            display: inline-block;
+        .category-content.active {
+            display: block; /* Pokazujemy tylko aktywną kategorię */
         }
 
         #legend {
@@ -81,6 +66,28 @@
 
         #legend div {
             margin: 10px 0; /* Zwiększenie odstępu między elementami */
+        }
+
+        .legend-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .legend-icon-square {
+            width: 30px;
+            height: 30px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
         }
     </style>
 </head>
@@ -201,7 +208,8 @@
     function showTab(tabId) {
         var tabs = document.querySelectorAll('.tab-content');
         tabs.forEach(tab => tab.classList.remove('active'));
-        document.getElementById(tabId).classList.add('active');
+        var content = document.getElementById(tabId);
+        content.classList.add('active');
     }
 </script>
 
