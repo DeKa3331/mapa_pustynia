@@ -13,9 +13,9 @@
 <body>
 
 <div id="controls">
-    <label><input type="checkbox" id="toggleA"> Struktura A</label>
-    <label><input type="checkbox" id="toggleB"> Struktura B</label>
-    <label><input type="checkbox" id="toggleC"> Struktura C</label>
+    <label><input type="checkbox" id="toggleMetin40"> Metin40</label>
+    <label><input type="checkbox" id="toggleMetin45"> Metin45</label>
+    <label><input type="checkbox" id="toggleMetin50"> Metin50</label>
 </div>
 
 <div id="map"></div>
@@ -24,26 +24,36 @@
 <script>
     var map = L.map('map', { crs: L.CRS.Simple, minZoom: -2, maxZoom: 2 });
     var bounds = [[0, 0], [1000, 1000]];
-    L.imageOverlay('mapa.jpg', bounds).addTo(map);
+    L.imageOverlay('mapa.jpg' bounds).addTo(map);
     map.fitBounds(bounds);
 
     var markers = {
-        A: L.marker([150, 100]).bindPopup("Struktura A"),
-        B: L.marker([400, 300]).bindPopup("Struktura B"),
-        C: L.marker([250, 500]).bindPopup("Struktura C")
+        Metin40: [
+            L.marker([150, 100], {icon: L.icon({iconUrl: 'metin40.png', iconSize: [32, 32]})}).bindPopup("Metin40-1"),
+            L.marker([200, 150], {icon: L.icon({iconUrl: 'metin40.png', iconSize: [32, 32]})}).bindPopup("Metin40-2"),
+            L.marker([250, 200], {icon: L.icon({iconUrl: 'metin40.png', iconSize: [32, 32]})}).bindPopup("Metin40-3"),
+            L.marker([300, 250], {icon: L.icon({iconUrl: 'metin40.png', iconSize: [32, 32]})}).bindPopup("Metin40-4"),
+            L.marker([350, 300], {icon: L.icon({iconUrl: 'metin40.png', iconSize: [32, 32]})}).bindPopup("Metin40-5")
+        ],
+        Metin45: [
+            L.marker([400, 300], {icon: L.icon({iconUrl: 'metin45.png', iconSize: [32, 32]})}).bindPopup("Metin45")
+        ],
+        Metin50: [
+            L.marker([250, 500], {icon: L.icon({iconUrl: 'metin50.png', iconSize: [32, 32]})}).bindPopup("Metin50")
+        ]
     };
 
-    function toggleMarker(id) {
+    function toggleMarkers(id) {
         if (document.getElementById('toggle' + id).checked) {
-            markers[id].addTo(map);
+            markers[id].forEach(marker => marker.addTo(map));
         } else {
-            map.removeLayer(markers[id]);
+            markers[id].forEach(marker => map.removeLayer(marker));
         }
     }
 
-    document.getElementById('toggleA').addEventListener('change', () => toggleMarker('A'));
-    document.getElementById('toggleB').addEventListener('change', () => toggleMarker('B'));
-    document.getElementById('toggleC').addEventListener('change', () => toggleMarker('C'));
+    document.getElementById('toggleMetin40').addEventListener('change', () => toggleMarkers('Metin40'));
+    document.getElementById('toggleMetin45').addEventListener('change', () => toggleMarkers('Metin45'));
+    document.getElementById('toggleMetin50').addEventListener('change', () => toggleMarkers('Metin50'));
 </script>
 
 </body>
