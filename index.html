@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interaktywna Mapa</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map { height: 500px; width: 80%; margin: auto; }
+        #controls { text-align: center; margin: 10px; }
+    </style>
+</head>
+<body>
+
+<div id="controls">
+    <label><input type="checkbox" id="toggleA"> Struktura A</label>
+    <label><input type="checkbox" id="toggleB"> Struktura B</label>
+    <label><input type="checkbox" id="toggleC"> Struktura C</label>
+</div>
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+    var map = L.map('map', { crs: L.CRS.Simple, minZoom: -2, maxZoom: 2 });
+    var bounds = [[0, 0], [1000, 1000]];
+    L.imageOverlay('mapa.jpg', bounds).addTo(map);
+    map.fitBounds(bounds);
+
+    var markers = {
+        A: L.marker([150, 100]).bindPopup("Struktura A"),
+        B: L.marker([400, 300]).bindPopup("Struktura B"),
+        C: L.marker([250, 500]).bindPopup("Struktura C")
+    };
+
+    function toggleMarker(id) {
+        if (document.getElementById('toggle' + id).checked) {
+            markers[id].addTo(map);
+        } else {
+            map.removeLayer(markers[id]);
+        }
+    }
+
+    document.getElementById('toggleA').addEventListener('change', () => toggleMarker('A'));
+    document.getElementById('toggleB').addEventListener('change', () => toggleMarker('B'));
+    document.getElementById('toggleC').addEventListener('change', () => toggleMarker('C'));
+</script>
+
+</body>
+</html>
