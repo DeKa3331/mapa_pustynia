@@ -52,18 +52,45 @@
             border-radius: 5px;
             display: inline-block;
         }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
     </style>
 </head>
 <body>
 
 <div id="controls">
-    <label><input type="checkbox" id="toggleMetin40"> Metin40</label>
-    <label><input type="checkbox" id="toggleMetin45"> Metin45</label>
-    <label><input type="checkbox" id="toggleMetin50"> Metin50</label>
-    <label><input type="checkbox" id="togglePlants"> Rośliny</label>
-    <label><input type="checkbox" id="toggleChests"> Skrzynie</label>
-    <label><input type="checkbox" id="toggleEmir"> Emir</label>
-    <label><input type="checkbox" id="toggleTarantula"> Tarantula</label>
+    <ul>
+        <li><button onclick="showTab('metiny')">Metiny</button></li>
+        <li><button onclick="showTab('rosliny')">Rośliny</button></li>
+        <li><button onclick="showTab('skrzynie')">Skrzynie</button></li>
+        <li><button onclick="showTab('bossy')">Bossy</button></li>
+    </ul>
+
+    <div id="metiny" class="tab-content">
+        <label><input type="checkbox" id="toggleMetin40"> Metin40</label>
+        <label><input type="checkbox" id="toggleMetin45"> Metin45</label>
+        <label><input type="checkbox" id="toggleMetin50"> Metin50</label>
+    </div>
+
+    <div id="rosliny" class="tab-content">
+        <label><input type="checkbox" id="toggleBrzoskwinia"> Brzoskwinia</label>
+        <label><input type="checkbox" id="togglePokrzywa"> Pokrzywa</label>
+    </div>
+
+    <div id="skrzynie" class="tab-content">
+        <label><input type="checkbox" id="toggleChests"> Skrzynie</label>
+    </div>
+
+    <div id="bossy" class="tab-content">
+        <label><input type="checkbox" id="toggleEmir"> Emir</label>
+        <label><input type="checkbox" id="toggleTarantula"> Tarantula</label>
+    </div>
 </div>
 
 <div id="map"></div>
@@ -142,18 +169,18 @@
     document.getElementById('toggleMetin40').addEventListener('change', () => toggleMarkers('Metin40'));
     document.getElementById('toggleMetin45').addEventListener('change', () => toggleMarkers('Metin45'));
     document.getElementById('toggleMetin50').addEventListener('change', () => toggleMarkers('Metin50'));
-    document.getElementById('togglePlants').addEventListener('change', () => toggleMarkers('Plants'));
+    document.getElementById('toggleBrzoskwinia').addEventListener('change', () => toggleMarkers('Plants'));
+    document.getElementById('togglePokrzywa').addEventListener('change', () => toggleMarkers('Plants'));
     document.getElementById('toggleChests').addEventListener('change', () => toggleMarkers('Chests'));
     document.getElementById('toggleEmir').addEventListener('change', () => toggleMarkers('Emir'));
     document.getElementById('toggleTarantula').addEventListener('change', () => toggleMarkers('Tarantula'));
 
-    // Nasłuchiwanie kliknięć na mapie
-    map.on('click', function(e) {
-        var latlng = e.latlng;  // Współrzędne kliknięcia
-        console.log('Kliknięto w: ' + latlng.lat + ', ' + latlng.lng);
-        // Możesz teraz dodać marker w tym miejscu
-        L.marker([latlng.lat, latlng.lng]).addTo(map).bindPopup("Nowy punkt: " + latlng.lat + ", " + latlng.lng).openPopup();
-    });
+    // Funkcja do przełączania zakładek
+    function showTab(tabId) {
+        var tabs = document.querySelectorAll('.tab-content');
+        tabs.forEach(tab => tab.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+    }
 </script>
 
 </body>
