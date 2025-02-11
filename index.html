@@ -17,39 +17,10 @@
             margin: auto; 
         }
 
-        #controls {
-            text-align: center;
-            margin: 10px;
-            color: white;
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-        }
-
-        #controls .category {
-            margin: 10px;
-            cursor: pointer;
-        }
-
-        #controls .category label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        #categories-content {
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 20px;
-        }
-
-        .category-content {
-            display: none; /* Ukrywamy domyślnie wszystkie sekcje */
-        }
-
-        .category-content.active {
-            display: block; /* Pokazujemy tylko aktywną kategorię */
+        #controls { 
+            text-align: center; 
+            margin: 10px; 
+            color: white; /* Biały tekst w kontrolkach */
         }
 
         #legend {
@@ -208,8 +179,7 @@
     function showTab(tabId) {
         var tabs = document.querySelectorAll('.tab-content');
         tabs.forEach(tab => tab.classList.remove('active'));
-        var content = document.getElementById(tabId);
-        content.classList.add('active');
+        document.getElementById(tabId).classList.add('active');
     }
 </script>
 
