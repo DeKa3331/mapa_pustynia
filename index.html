@@ -33,7 +33,7 @@
 
     var markers = {
         Metin40: [
-            L.marker([150, 200], {icon: metin40Icon}).bindPopup("Metin40-1"),
+            L.marker([150, 100], {icon: metin40Icon}).bindPopup("Metin40-1"),
             L.marker([240, 170], {icon: metin40Icon}).bindPopup("Metin40-2"),
             L.marker([850, 800], {icon: metin40Icon}).bindPopup("Metin40-3"),
             L.marker([800, 850], {icon: metin40Icon}).bindPopup("Metin40-4"),
@@ -58,6 +58,14 @@
     document.getElementById('toggleMetin40').addEventListener('change', () => toggleMarkers('Metin40'));
     document.getElementById('toggleMetin45').addEventListener('change', () => toggleMarkers('Metin45'));
     document.getElementById('toggleMetin50').addEventListener('change', () => toggleMarkers('Metin50'));
+
+    // Nasłuchiwanie kliknięć na mapie
+    map.on('click', function(e) {
+        var latlng = e.latlng;  // Współrzędne kliknięcia
+        console.log('Kliknięto w: ' + latlng.lat + ', ' + latlng.lng);
+        // Możesz teraz dodać marker w tym miejscu
+        L.marker([latlng.lat, latlng.lng]).addTo(map).bindPopup("Nowy punkt: " + latlng.lat + ", " + latlng.lng).openPopup();
+    });
 </script>
 
 </body>
