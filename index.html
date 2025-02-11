@@ -18,10 +18,17 @@
         }
 
         #controls { 
-            text-align: center; 
-            margin: 10px; 
-            color: white; /* Biały tekst w kontrolkach */
-        }
+    text-align: center; 
+    margin: 10px; 
+    color: white;
+    display: flex;  /* Używamy flexbox do wyrównania elementów */
+    flex-wrap: wrap;  /* Pozwalamy na zawijanie elementów, jeśli braknie miejsca */
+    justify-content: center;  /* Wyrównanie elementów na środku */
+}
+
+#controls label {
+    margin: 5px 15px; /* Odstępy między kontrolkami */
+}
 
         #legend {
             background-color: #333; /* Jaśniejszy szary kolor tła legendy */
