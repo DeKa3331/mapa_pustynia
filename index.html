@@ -181,6 +181,14 @@
         tabs.forEach(tab => tab.classList.remove('active'));
         document.getElementById(tabId).classList.add('active');
     }
+
+     // Nasłuchiwanie kliknięć na mapie
+    map.on('click', function(e) {
+        var latlng = e.latlng;  // Współrzędne kliknięcia
+        console.log('Kliknięto w: ' + latlng.lat + ', ' + latlng.lng);
+        // Możesz teraz dodać marker w tym miejscu
+        L.marker([latlng.lat, latlng.lng]).addTo(map).bindPopup("Nowy punkt: " + latlng.lat + ", " + latlng.lng).openPopup();
+    });
 </script>
 
 </body>
