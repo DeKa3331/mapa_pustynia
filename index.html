@@ -8,6 +8,31 @@
     <style>
         #map { height: 800px; width: 100%; margin: auto; }
         #controls { text-align: center; margin: 10px; }
+        #legend {
+            background-color: white;
+            padding: 10px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            font-size: 14px;
+        }
+        #legend div {
+            margin: 5px 0;
+        }
+        .legend-icon {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .legend-icon-square {
+            width: 15px;
+            height: 15px;
+            border-radius: 5px;
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
@@ -23,6 +48,18 @@
 </div>
 
 <div id="map"></div>
+
+<div id="legend">
+    <strong>Legenda</strong>
+    <div><span class="legend-icon" style="background-color: green;"></span> Metin40</div>
+    <div><span class="legend-icon" style="background-color: lightblue;"></span> Metin45</div>
+    <div><span class="legend-icon" style="background-color: pink;"></span> Metin50</div>
+    <div><span class="legend-icon" style="background-color: orange;"></span> Brzoskwinia (Roślina)</div>
+    <div><span class="legend-icon" style="background-color: green;"></span> Pokrzywa (Roślina)</div>
+    <div><span class="legend-icon-square" style="background-color: brown;"></span> Skrzynia</div>
+    <div><span class="legend-icon" style="background-color: red;"></span> Emir (Zasięg)</div>
+    <div><span class="legend-icon" style="background-color: black;"></span> Tarantula (Zasięg)</div>
+</div>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script>
