@@ -6,29 +6,48 @@
     <title>Interaktywna Mapa</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <style>
-        #map { height: 500px; width: 50%; margin: auto; }
-        #controls { text-align: center; margin: 10px; }
+        body {
+            background-color: black; /* Czarne tło strony */
+            color: white; /* Biały tekst */
+        }
+        
+        #map { 
+            height: 500px; 
+            width: 50%; 
+            margin: auto; 
+        }
+
+        #controls { 
+            text-align: center; 
+            margin: 10px; 
+            color: white; /* Biały tekst w kontrolkach */
+        }
+
         #legend {
-            background-color: white;
-            padding: 20px;  /* Zwiększenie przestrzeni */
+            background-color: #333; /* Jaśniejszy szary kolor tła legendy */
+            padding: 20px;
             position: absolute;
             top: 10px;
             left: 10px;
             z-index: 1000;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-            font-size: 28px;  /* Zwiększenie czcionki */
+            font-size: 18px;
+            color: white; /* Biały tekst w legendzie */
         }
+
         #legend div {
-            margin: 10px 0;  /* Zwiększenie odstępu między elementami */
+            margin: 10px 0; /* Zwiększenie odstępu między elementami */
         }
+
         .legend-icon {
-            width: 24px;  /* Zwiększenie rozmiaru ikon */
+            width: 24px;
             height: 24px;
             border-radius: 50%;
             display: inline-block;
         }
+
         .legend-icon-square {
-            width: 30px;  /* Zwiększenie rozmiaru ikon kwadratowych */
+            width: 30px;
             height: 30px;
             border-radius: 5px;
             display: inline-block;
