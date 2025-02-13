@@ -197,14 +197,14 @@
 
     // Funkcja do przełączania widoczności markerów
     function toggleMarkers(type) {
-        markers[type].forEach(marker => {
-            if (marker._icon.style.display === 'none') {
-                marker.addTo(map);
-            } else {
-                marker.remove();
-            }
-        });
-    }
+    markers[type].forEach(marker => {
+        if (!map.hasLayer(marker)) {
+            marker.addTo(map);
+        } else {
+            marker.remove();
+        }
+    });
+}
 
     // Obsługa przełączania markerów dla różnych typów
     document.getElementById('toggleMetin40').addEventListener('change', () => toggleMarkers('Metin40'));
@@ -223,6 +223,17 @@
         });
         document.getElementById(tab).classList.add('active');
     }
+
+    // Nasłuchiwanie kliknięć na mapie
+    map.on('click', function(e) {
+        var latlng = e.latlng;  // Współrzędne kliknięcia
+        console.log('Kliknięto w: ' + latlng.lat + ', ' + latlng.lng);
+        // Możesz teraz dodać marker w tym miejscu
+        L.marker([latlng.lat, latlng.lng]).addTo(map).bindPopup("Nowy punkt: " + latlng.lat + ", " + latlng.lng).openPopup();
+    });
+
+
+    
 </script>
 
 </body>
