@@ -60,23 +60,27 @@
         .tab-content.active {
             display: block;
         }
+
+        #controlMaps {
+            text-align: center;
+            margin: 20px auto;
+        }
+
+        #controlMaps button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #controlMaps button:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
-
-<div id="map"></div>
-
-<div id="legend">
-    <strong>Legenda</strong>
-    <div><span class="legend-icon" style="background-color: green;"></span> Metin40</div>
-    <div><span class="legend-icon" style="background-color: lightblue;"></span> Metin45</div>
-    <div><span class="legend-icon" style="background-color: pink;"></span> Metin50</div>
-    <div><span class="legend-icon" style="background-color: orange;"></span> Brzoskwinia (Roślina)</div>
-    <div><span class="legend-icon" style="background-color: green;"></span> Pokrzywa (Roślina)</div>
-    <div><span class="legend-icon-square" style="background-color: brown;"></span> Skrzynia</div>
-    <div><span class="legend-icon" style="background-color: red;"></span> Emir (Zasięg)</div>
-    <div><span class="legend-icon" style="background-color: black;"></span> Tarantula (Zasięg)</div>
-</div>
 
 <div id="controls">
     <ul>
@@ -105,6 +109,12 @@
         <label><input type="checkbox" id="toggleEmir"> Emir</label>
         <label><input type="checkbox" id="toggleTarantula"> Tarantula</label>
     </div>
+</div>
+
+<div id="map"></div>
+
+<div id="controlMaps">
+    <button onclick="window.location.href='gora_sochan.html'">Przejdź do Góra Sochan</button>
 </div>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -161,8 +171,8 @@
             L.circle([458, 240], {radius: 100, color: 'red', fillColor: 'red', fillOpacity: 0.2}).bindPopup("Emir - Zasięg"),
         ],
         Tarantula: [
-            L.circle([780, 588], {radius: 100, color: 'black', fillColor: 'black', fillOpacity: 0.2}).bindPopup("Tarantula - Zasięg"),
-            L.circle([228, 860], {radius: 100, color: 'black', fillColor: 'black', fillOpacity: 0.2}).bindPopup("Tarantula - Zasięg"),
+            L.circle([780, 588], {radius: 150, color: 'black', fillColor: 'black', fillOpacity: 0.2}).bindPopup("Tarantula - Zasięg"),
+            L.circle([228, 860], {radius: 150, color: 'black', fillColor: 'black', fillOpacity: 0.2}).bindPopup("Tarantula - Zasięg"),
         ]
     };
 
