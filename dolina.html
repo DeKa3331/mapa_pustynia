@@ -1,1 +1,229 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interaktywna Mapa</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        body {
+            background-color: black; /* Czarne tło strony */
+            color: white; /* Biały tekst */
+        }
 
+        #map { 
+            height: 500px; 
+            width: 50%; 
+            margin: auto; 
+        }
+
+        #controls { 
+            text-align: center; 
+            margin: 10px; 
+            color: white; /* Biały tekst w kontrolkach */
+        }
+
+        #legend {
+            background-color: #333; /* Jaśniejszy szary kolor tła legendy */
+            padding: 20px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            font-size: 18px;
+            color: white; /* Biały tekst w legendzie */
+            width: 250px; /* Szerokość legendy */
+        }
+
+        #legend div {
+            margin: 10px 0; /* Zwiększenie odstępu między elementami */
+        }
+
+        .legend-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .legend-icon-square {
+            width: 30px;
+            height: 30px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        #controlMaps {
+            text-align: center;
+            margin: 20px auto;
+        }
+
+        #controlMaps button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        #controlMaps button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div id="controls">
+    <ul>
+        <li><button onclick="showTab('metiny')">Metiny</button></li>
+        <li><button onclick="showTab('rosliny')">Rośliny</button></li>
+        <li><button onclick="showTab('skrzynie')">Skrzynie</button></li>
+        <li><button onclick="showTab('bossy')">Bossy</button></li>
+    </ul>
+
+    <div id="metiny" class="tab-content">
+        <label><input type="checkbox" id="toggleMetin40"> Metin40</label>
+        <label><input type="checkbox" id="toggleMetin45"> Metin45</label>
+        <label><input type="checkbox" id="toggleMetin50"> Metin50</label>
+    </div>
+
+    <div id="rosliny" class="tab-content">
+        <label><input type="checkbox" id="toggleBrzoskwinia"> Brzoskwinia</label>
+        <label><input type="checkbox" id="togglePokrzywa"> Pokrzywa</label>
+    </div>
+
+    <div id="skrzynie" class="tab-content">
+        <label><input type="checkbox" id="toggleChests"> Skrzynie</label>
+    </div>
+
+    <div id="bossy" class="tab-content">
+        <label><input type="checkbox" id="toggleEmir"> Emir</label>
+        <label><input type="checkbox" id="toggleTarantula"> Tarantula</label>
+    </div>
+</div>
+
+<div id="map"></div>
+
+<div id="controlMaps">
+    <button onclick="window.location.href='dolina.html'">Dolina</button>
+    <button onclick="window.location.href='gora_sochan.html'">Góra Sochan</button>
+    <button onclick="window.location.href='m1.html'">M1</button>
+    <button onclick="window.location.href='m2.html'">M2</button>
+    <button onclick="window.location.href='m3.html'">M3</button>
+    <button onclick="window.location.href='ognista_ziemia.html'">Ognista Ziemia</button>
+    <button onclick="window.location.href='swiatynia_hwang.html'">Świątynia Hwang</button>
+    <button onclick="window.location.href='index.html'">Pustynia</button>
+</div>
+
+<div id="legend">
+    <h3>Legenda</h3>
+    <div><span class="legend-icon" style="background-color: green;"></span> Metin40</div>
+    <div><span class="legend-icon" style="background-color: lightblue;"></span> Metin45</div>
+    <div><span class="legend-icon" style="background-color: pink;"></span> Metin50</div>
+    <div><span class="legend-icon" style="background-color: orange;"></span> Brzoskwinia</div>
+    <div><span class="legend-icon" style="background-color: green;"></span> Pokrzywa</div>
+    <div><span class="legend-icon-square" style="background-color: brown;"></span> Skrzynie</div>
+    <div><span class="legend-icon" style="background-color: red;"></span> Emir</div>
+    <div><span class="legend-icon" style="background-color: black;"></span> Tarantula</div>
+</div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+    var map = L.map('map', { crs: L.CRS.Simple, minZoom: -2, maxZoom: 2 });
+    var bounds = [[0, 0], [1000, 1000]]; // Określ granice mapy
+    L.imageOverlay('dolina.jpg', bounds).addTo(map);
+    map.fitBounds(bounds);
+
+    // Ikony markerów
+    var metin40Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: green; border-radius: 50%;"></div>'});
+    var metin45Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: lightblue; border-radius: 50%;"></div>'});
+    var metin50Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: pink; border-radius: 50%;"></div>'});
+    
+    var plantIcons = {
+        brzoskwinia: L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: orange; border-radius: 50%;"></div>'}),
+        pokrzywa: L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: green; border-radius: 50%;"></div>'})
+    };
+    
+    var chestIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 30px; height: 30px; background-color: brown; border-radius: 5px;"></div>'});
+
+    var markers = {
+        Metin40: [
+            L.marker([362, 654], {icon: metin40Icon}).bindPopup("Metin40-1"),
+            L.marker([594, 89], {icon: metin40Icon}).bindPopup("Metin40-1"),
+            L.marker([452, 665], {icon: metin40Icon}).bindPopup("Metin40-1"),
+        ],
+        Metin45: [
+            L.marker([208, 95], {icon: metin45Icon}).bindPopup("Metin45-1"),
+            L.marker([212, 187], {icon: metin45Icon}).bindPopup("Metin45-2"),
+            L.marker([258, 518], {icon: metin45Icon}).bindPopup("Metin45-3"),
+            L.marker([431, 105], {icon: metin45Icon}).bindPopup("Metin45-4"),
+            L.marker([254, 378], {icon: metin45Icon}).bindPopup("Metin45-5"),
+            L.marker([690, 917], {icon: metin45Icon}).bindPopup("Metin45-5"),
+            L.marker([556, 749], {icon: metin45Icon}).bindPopup("Metin45-5"),
+            L.marker([417, 235], {icon: metin45Icon}).bindPopup("Metin45-5"),
+        ],
+        Metin50: [
+            L.marker([502, 391], {icon: metin50Icon}).bindPopup("Metin50-1"),
+            L.marker([349, 647], {icon: metin50Icon}).bindPopup("Metin50-1"),
+            L.marker([455, 621], {icon: metin50Icon}).bindPopup("Metin50-1"),
+            L.marker([422, 110], {icon: metin50Icon}).bindPopup("Metin50-1"),
+        ],
+        Plants: [
+            L.marker([500, 500], {icon: plantIcons.brzoskwinia}).bindPopup("Brzoskwinia"),
+            L.marker([300, 600], {icon: plantIcons.pokrzywa}).bindPopup("Pokrzywa"),
+        ],
+        Chests: [
+            L.marker([630, 450], {icon: chestIcon}).bindPopup("Skrzynia-1"),
+            L.marker([810, 760], {icon: chestIcon}).bindPopup("Skrzynia-2"),
+        ],
+        Emir: [
+            L.marker([120, 500], {icon: L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: red; border-radius: 50%;"></div>'})}).bindPopup("Emir")
+        ],
+        Tarantula: [
+            L.marker([820, 340], {icon: L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: black; border-radius: 50%;"></div>'})}).bindPopup("Tarantula")
+        ]
+    };
+
+    // Funkcja do przełączania widoczności markerów
+    function toggleMarkers(type) {
+        markers[type].forEach(marker => {
+            if (marker._icon.style.display === 'none') {
+                marker.addTo(map);
+            } else {
+                marker.remove();
+            }
+        });
+    }
+
+    // Obsługa przełączania markerów dla różnych typów
+    document.getElementById('toggleMetin40').addEventListener('change', () => toggleMarkers('Metin40'));
+    document.getElementById('toggleMetin45').addEventListener('change', () => toggleMarkers('Metin45'));
+    document.getElementById('toggleMetin50').addEventListener('change', () => toggleMarkers('Metin50'));
+    document.getElementById('toggleBrzoskwinia').addEventListener('change', () => toggleMarkers('Plants'));
+    document.getElementById('togglePokrzywa').addEventListener('change', () => toggleMarkers('Plants'));
+    document.getElementById('toggleChests').addEventListener('change', () => toggleMarkers('Chests'));
+    document.getElementById('toggleEmir').addEventListener('change', () => toggleMarkers('Emir'));
+    document.getElementById('toggleTarantula').addEventListener('change', () => toggleMarkers('Tarantula'));
+
+    // Funkcja do przełączania tabów
+    function showTab(tab) {
+        document.querySelectorAll('.tab-content').forEach(function(content) {
+            content.classList.remove('active');
+        });
+        document.getElementById(tab).classList.add('active');
+    }
+</script>
+
+</body>
+</html>
