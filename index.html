@@ -64,6 +64,20 @@
 </head>
 <body>
 
+<div id="map"></div>
+
+<div id="legend">
+    <strong>Legenda</strong>
+    <div><span class="legend-icon" style="background-color: green;"></span> Metin40</div>
+    <div><span class="legend-icon" style="background-color: lightblue;"></span> Metin45</div>
+    <div><span class="legend-icon" style="background-color: pink;"></span> Metin50</div>
+    <div><span class="legend-icon" style="background-color: orange;"></span> Brzoskwinia (Roślina)</div>
+    <div><span class="legend-icon" style="background-color: green;"></span> Pokrzywa (Roślina)</div>
+    <div><span class="legend-icon-square" style="background-color: brown;"></span> Skrzynia</div>
+    <div><span class="legend-icon" style="background-color: red;"></span> Emir (Zasięg)</div>
+    <div><span class="legend-icon" style="background-color: black;"></span> Tarantula (Zasięg)</div>
+</div>
+
 <div id="controls">
     <ul>
         <li><button onclick="showTab('metiny')">Metiny</button></li>
@@ -91,20 +105,6 @@
         <label><input type="checkbox" id="toggleEmir"> Emir</label>
         <label><input type="checkbox" id="toggleTarantula"> Tarantula</label>
     </div>
-</div>
-
-<div id="map"></div>
-
-<div id="legend">
-    <strong>Legenda</strong>
-    <div><span class="legend-icon" style="background-color: green;"></span> Metin40</div>
-    <div><span class="legend-icon" style="background-color: lightblue;"></span> Metin45</div>
-    <div><span class="legend-icon" style="background-color: pink;"></span> Metin50</div>
-    <div><span class="legend-icon" style="background-color: orange;"></span> Brzoskwinia (Roślina)</div>
-    <div><span class="legend-icon" style="background-color: green;"></span> Pokrzywa (Roślina)</div>
-    <div><span class="legend-icon-square" style="background-color: brown;"></span> Skrzynia</div>
-    <div><span class="legend-icon" style="background-color: red;"></span> Emir (Zasięg)</div>
-    <div><span class="legend-icon" style="background-color: black;"></span> Tarantula (Zasięg)</div>
 </div>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -185,20 +185,13 @@
     document.getElementById('toggleEmir').addEventListener('change', () => toggleMarkers('Emir'));
     document.getElementById('toggleTarantula').addEventListener('change', () => toggleMarkers('Tarantula'));
 
-    // Funkcja do przełączania zakładek
-    function showTab(tabId) {
-        var tabs = document.querySelectorAll('.tab-content');
-        tabs.forEach(tab => tab.classList.remove('active'));
-        document.getElementById(tabId).classList.add('active');
+    // Funkcja do przełączania tabów
+    function showTab(tab) {
+        document.querySelectorAll('.tab-content').forEach(function(content) {
+            content.classList.remove('active');
+        });
+        document.getElementById(tab).classList.add('active');
     }
-
-     // Nasłuchiwanie kliknięć na mapie
-    map.on('click', function(e) {
-        var latlng = e.latlng;  // Współrzędne kliknięcia
-        console.log('Kliknięto w: ' + latlng.lat + ', ' + latlng.lng);
-        // Możesz teraz dodać marker w tym miejscu
-        L.marker([latlng.lat, latlng.lng]).addTo(map).bindPopup("Nowy punkt: " + latlng.lat + ", " + latlng.lng).openPopup();
-    });
 </script>
 
 </body>
