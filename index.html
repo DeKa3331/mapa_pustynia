@@ -60,6 +60,23 @@
         .tab-content.active {
             display: block;
         }
+        #controlMaps {
+            text-align: center;
+            margin: 20px auto;
+        }
+
+        #controlMaps button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #controlMaps button:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
@@ -94,6 +111,17 @@
 </div>
 
 <div id="map"></div>
+
+<div id="controlMaps">
+    <button onclick="window.location.href='dolina.html'">Dolina</button>
+    <button onclick="window.location.href='gora_sochan.html'">Góra Sochan</button>
+    <button onclick="window.location.href='m1.html'">M1</button>
+    <button onclick="window.location.href='m2.html'">M2</button>
+    <button onclick="window.location.href='m3.html'">M3</button>
+    <button onclick="window.location.href='ognista_ziemia.html'">Ognista Ziemia</button>
+    <button onclick="window.location.href='swiatynia_hwang.html'">Świątynia Hwang</button>
+    <button onclick="window.location.href='index.html'">Pustynia</button>
+</div>
 
 <div id="legend">
     <strong>Legenda</strong>
