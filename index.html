@@ -10,16 +10,16 @@
             background-color: black; /* Czarne tło strony */
             color: white; /* Biały tekst */
         }
-
-        #map {
-            height: 500px;
-            width: 50%;
-            margin: auto;
+        
+        #map { 
+            height: 500px; 
+            width: 50%; 
+            margin: auto; 
         }
 
-        #controls {
-            text-align: center;
-            margin: 10px;
+        #controls { 
+            text-align: center; 
+            margin: 10px; 
             color: white; /* Biały tekst w kontrolkach */
         }
 
@@ -70,8 +70,6 @@
         <li><button onclick="showTab('rosliny')">Rośliny</button></li>
         <li><button onclick="showTab('skrzynie')">Skrzynie</button></li>
         <li><button onclick="showTab('bossy')">Bossy</button></li>
-        <li><button onclick="switchMap('mapa1')">Mapa 1</button></li>
-        <li><button onclick="switchMap('mapa2')">Mapa 2</button></li>
     </ul>
 
     <div id="metiny" class="tab-content">
@@ -113,23 +111,8 @@
 <script>
     var map = L.map('map', { crs: L.CRS.Simple, minZoom: -2, maxZoom: 2 });
     var bounds = [[0, 0], [1000, 1000]]; // Określ granice mapy
-
-    // Dodaj dwie różne mapy jako obrazy
-    var mapa1 = L.imageOverlay('mapa1.jpg', bounds).addTo(map);
-    var mapa2 = L.imageOverlay('mapa2.jpg', bounds); // Nie dodajemy na początku
-
+    L.imageOverlay('mapa.jpg', bounds).addTo(map);
     map.fitBounds(bounds);
-
-    // Funkcja do przełączania mapy
-    function switchMap(mapId) {
-        if (mapId === 'mapa1') {
-            mapa1.addTo(map);
-            mapa2.removeFrom(map);
-        } else if (mapId === 'mapa2') {
-            mapa2.addTo(map);
-            mapa1.removeFrom(map);
-        }
-    }
 
     // Ikony markerów
     var metin40Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: green; border-radius: 50%;"></div>'});
@@ -178,8 +161,8 @@
             L.circle([458, 240], {radius: 100, color: 'red', fillColor: 'red', fillOpacity: 0.2}).bindPopup("Emir - Zasięg"),
         ],
         Tarantula: [
-            L.circle([780, 588], {radius: 100, color: 'black', fillColor: 'black', fillOpacity: 0.2}).bindPopup("Tarantula - Zasięg"),
-            L.circle([228, 860], {radius: 100, color: 'black', fillColor: 'black', fillOpacity: 0.2}).bindPopup("Tarantula - Zasięg"),
+            L.circle([780, 588], {radius: 150, color: 'black', fillColor: 'black', fillOpacity: 0.2}).bindPopup("Tarantula - Zasięg"),
+            L.circle([228, 860], {radius: 150, color: 'black', fillColor: 'black', fillOpacity: 0.2}).bindPopup("Tarantula - Zasięg"),
         ]
     };
 
@@ -202,17 +185,20 @@
     document.getElementById('toggleEmir').addEventListener('change', () => toggleMarkers('Emir'));
     document.getElementById('toggleTarantula').addEventListener('change', () => toggleMarkers('Tarantula'));
 
-    // Funkcja do przełączania między zakładkami
-    function showTab(tabName) {
+    // Funkcja do przełączania zakładek
+    function showTab(tabId) {
         var tabs = document.querySelectorAll('.tab-content');
-        tabs.forEach(function(tab) {
-            tab.classList.remove('active');
-        });
-        document.getElementById(tabName).classList.add('active');
+        tabs.forEach(tab => tab.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
     }
 
-    // Domyślnie pokazujemy zakładkę 'metiny'
-    showTab('metiny');
+     // Nasłuchiwanie kliknięć na mapie
+    map.on('click', function(e) {
+        var latlng = e.latlng;  // Współrzędne kliknięcia
+        console.log('Kliknięto w: ' + latlng.lat + ', ' + latlng.lng);
+        // Możesz teraz dodać marker w tym miejscu
+        L.marker([latlng.lat, latlng.lng]).addTo(map).bindPopup("Nowy punkt: " + latlng.lat + ", " + latlng.lng).openPopup();
+    });
 </script>
 
 </body>
