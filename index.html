@@ -10,7 +10,7 @@
             background-color: black; /* Czarne tło strony */
             color: white; /* Biały tekst */
         }
-        
+
         #map { 
             height: 500px; 
             width: 50%; 
@@ -33,6 +33,7 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
             font-size: 18px;
             color: white; /* Biały tekst w legendzie */
+            width: 250px; /* Szerokość legendy */
         }
 
         #legend div {
@@ -125,6 +126,18 @@
     <button onclick="window.location.href='index.html'">Pustynia</button>
 </div>
 
+<div id="legend">
+    <h3>Legenda</h3>
+    <div><span class="legend-icon" style="background-color: green;"></span> Metin40</div>
+    <div><span class="legend-icon" style="background-color: lightblue;"></span> Metin45</div>
+    <div><span class="legend-icon" style="background-color: pink;"></span> Metin50</div>
+    <div><span class="legend-icon" style="background-color: orange;"></span> Brzoskwinia</div>
+    <div><span class="legend-icon" style="background-color: green;"></span> Pokrzywa</div>
+    <div><span class="legend-icon-square" style="background-color: brown;"></span> Skrzynie</div>
+    <div><span class="legend-icon" style="background-color: red;"></span> Emir</div>
+    <div><span class="legend-icon" style="background-color: black;"></span> Tarantula</div>
+</div>
+
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script>
     var map = L.map('map', { crs: L.CRS.Simple, minZoom: -2, maxZoom: 2 });
@@ -168,32 +181,32 @@
         ],
         Plants: [
             L.marker([500, 500], {icon: plantIcons.brzoskwinia}).bindPopup("Brzoskwinia"),
-            L.marker([700, 700], {icon: plantIcons.pokrzywa}).bindPopup("Pokrzywa")
+            L.marker([300, 600], {icon: plantIcons.pokrzywa}).bindPopup("Pokrzywa"),
         ],
         Chests: [
-            L.marker([206, 551], {icon: chestIcon}).bindPopup("Skrzynia 1"),
-            L.marker([240, 765], {icon: chestIcon}).bindPopup("Skrzynia 2"),
+            L.marker([630, 450], {icon: chestIcon}).bindPopup("Skrzynia-1"),
+            L.marker([810, 760], {icon: chestIcon}).bindPopup("Skrzynia-2"),
         ],
         Emir: [
-            L.circle([266, 530], {radius: 100, color: 'red', fillColor: 'red', fillOpacity: 0.2}).bindPopup("Emir - Zasięg"),
-            L.circle([458, 240], {radius: 100, color: 'red', fillColor: 'red', fillOpacity: 0.2}).bindPopup("Emir - Zasięg"),
+            L.marker([120, 500], {icon: L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: red; border-radius: 50%;"></div>'})}).bindPopup("Emir")
         ],
         Tarantula: [
-            L.circle([780, 588], {radius: 150, color: 'black', fillColor: 'black', fillOpacity: 0.2}).bindPopup("Tarantula - Zasięg"),
-            L.circle([228, 860], {radius: 150, color: 'black', fillColor: 'black', fillOpacity: 0.2}).bindPopup("Tarantula - Zasięg"),
+            L.marker([820, 340], {icon: L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: black; border-radius: 50%;"></div>'})}).bindPopup("Tarantula")
         ]
     };
 
-    // Funkcja do przełączania markerów
-    function toggleMarkers(id) {
-        if (document.getElementById('toggle' + id).checked) {
-            markers[id].forEach(marker => marker.addTo(map));
-        } else {
-            markers[id].forEach(marker => map.removeLayer(marker));
-        }
+    // Funkcja do przełączania widoczności markerów
+    function toggleMarkers(type) {
+        markers[type].forEach(marker => {
+            if (marker._icon.style.display === 'none') {
+                marker.addTo(map);
+            } else {
+                marker.remove();
+            }
+        });
     }
 
-    // Nasłuchiwanie zdarzeń checkboxów
+    // Obsługa przełączania markerów dla różnych typów
     document.getElementById('toggleMetin40').addEventListener('change', () => toggleMarkers('Metin40'));
     document.getElementById('toggleMetin45').addEventListener('change', () => toggleMarkers('Metin45'));
     document.getElementById('toggleMetin50').addEventListener('change', () => toggleMarkers('Metin50'));
