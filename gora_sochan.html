@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
@@ -10,7 +10,7 @@
             background-color: black; /* Czarne tło strony */
             color: white; /* Biały tekst */
         }
-
+        
         #map { 
             height: 500px; 
             width: 50%; 
@@ -33,7 +33,6 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
             font-size: 18px;
             color: white; /* Biały tekst w legendzie */
-            width: 250px; /* Szerokość legendy */
         }
 
         #legend div {
@@ -61,7 +60,6 @@
         .tab-content.active {
             display: block;
         }
-
         #controlMaps {
             text-align: center;
             margin: 20px auto;
@@ -74,7 +72,6 @@
             color: white;
             border: none;
             cursor: pointer;
-            margin: 5px;
         }
 
         #controlMaps button:hover {
@@ -101,6 +98,10 @@
     <div id="rosliny" class="tab-content">
         <label><input type="checkbox" id="toggleBrzoskwinia"> Brzoskwinia</label>
         <label><input type="checkbox" id="togglePokrzywa"> Pokrzywa</label>
+        <label><input type="checkbox" id="toggleKorzenWeza"> Korzeń Węża</label>
+        <label><input type="checkbox" id="toggleKorzenGango"> Korzeń Gango</label>
+        <label><input type="checkbox" id="toggleBez"> Bez</label>
+        <label><input type="checkbox" id="toggleKwiatKaki"> Kwiat Kaki</label>
     </div>
 
     <div id="skrzynie" class="tab-content">
@@ -127,15 +128,20 @@
 </div>
 
 <div id="legend">
-    <h3>Legenda</h3>
-    <div><span class="legend-icon" style="background-color: green;"></span> Metin40</div>
-    <div><span class="legend-icon" style="background-color: lightblue;"></span> Metin45</div>
-    <div><span class="legend-icon" style="background-color: pink;"></span> Metin50</div>
-    <div><span class="legend-icon" style="background-color: orange;"></span> Brzoskwinia</div>
-    <div><span class="legend-icon" style="background-color: green;"></span> Pokrzywa</div>
-    <div><span class="legend-icon-square" style="background-color: brown;"></span> Skrzynie</div>
-    <div><span class="legend-icon" style="background-color: red;"></span> Emir</div>
-    <div><span class="legend-icon" style="background-color: black;"></span> Tarantula</div>
+    <strong>Legenda</strong>
+<div><span class="legend-icon" style="background-color: purple;"></span> Metin40</div>
+<div><span class="legend-icon" style="background-color: blue;"></span> Metin45</div>
+<div><span class="legend-icon" style="background-color: #ff69b4;"></span> Metin50</div>
+<div><span class="legend-icon" style="background-color: #f8c8d8;"></span> Brzoskwinia</div>
+<div><span class="legend-icon" style="background-color: darkgreen;"></span> Pokrzywa</div>
+<div><span class="legend-icon" style="background-color: #b8860b"></span> Korzeń Węża</div>
+<div><span class="legend-icon" style="background-color: #ff8c00"></span> Korzeń Gango</div>
+<div><span class="legend-icon" style="background-color: black;"></span> Bez</div>
+<div><span class="legend-icon" style="background-color: yellow;"></span> Kwiat Kaki</div>
+<div><span class="legend-icon-square" style="background-color: brown;"></span> Skrzynia</div>
+<div><span class="legend-icon" style="background-color: red;"></span> Emir</div>
+<div><span class="legend-icon" style="background-color: #fffffe;"></span> Tarantula</div>
+
 </div>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -146,14 +152,18 @@
     map.fitBounds(bounds);
 
     // Ikony markerów
-    var metin40Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: green; border-radius: 50%;"></div>'});
-    var metin45Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: lightblue; border-radius: 50%;"></div>'});
-    var metin50Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: pink; border-radius: 50%;"></div>'});
-    
-    var plantIcons = {
-        brzoskwinia: L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: orange; border-radius: 50%;"></div>'}),
-        pokrzywa: L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: green; border-radius: 50%;"></div>'})
-    };
+    var metin40Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: purple; border-radius: 50%;"></div>'});
+var metin45Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: blue; border-radius: 50%;"></div>'});
+var metin50Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #ff69b4; border-radius: 50%;"></div>'});
+
+var brzoskwiniaIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #f8c8d8; border-radius: 50%;"></div>'});
+var pokrzywaIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: darkgreen; border-radius: 50%;"></div>'});
+var korzenWezaIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #b8860b; border-radius: 50%;"></div>'});
+var korzenGangoIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #ff8c00; border-radius: 50%;"></div>'});
+var bezIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: black; border-radius: 50%;"></div>'});
+var kwiatKakiIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: yellow; border-radius: 50%;"></div>'});
+
+
     
     var chestIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 30px; height: 30px; background-color: brown; border-radius: 5px;"></div>'});
 
@@ -162,6 +172,8 @@
             L.marker([362, 654], {icon: metin40Icon}).bindPopup("Metin40-1"),
             L.marker([594, 89], {icon: metin40Icon}).bindPopup("Metin40-1"),
             L.marker([452, 665], {icon: metin40Icon}).bindPopup("Metin40-1"),
+            L.marker([236, 603], {icon: metin40Icon}).bindPopup("Metin40-1"),
+            L.marker([787, 569], {icon: metin40Icon}).bindPopup("Metin40-1"),
         ],
         Metin45: [
             L.marker([208, 95], {icon: metin45Icon}).bindPopup("Metin45-1"),
@@ -179,50 +191,77 @@
             L.marker([455, 621], {icon: metin50Icon}).bindPopup("Metin50-1"),
             L.marker([422, 110], {icon: metin50Icon}).bindPopup("Metin50-1"),
         ],
-        Plants: [
-            L.marker([500, 500], {icon: plantIcons.brzoskwinia}).bindPopup("Brzoskwinia"),
-            L.marker([300, 600], {icon: plantIcons.pokrzywa}).bindPopup("Pokrzywa"),
+        Brzoskwinia: [
+            L.marker([500, 500], {icon: brzoskwiniaIcon}).bindPopup("Brzoskwinia"),
+            L.marker([510, 510], {icon: brzoskwiniaIcon}).bindPopup("Brzoskwinia")
+        ],
+        Pokrzywa: [
+            L.marker([700, 700], {icon: pokrzywaIcon}).bindPopup("Pokrzywa"),
+            L.marker([710, 710], {icon: pokrzywaIcon}).bindPopup("Pokrzywa")
+        ],
+        KorzenWeza: [
+            L.marker([300, 300], {icon: korzenWezaIcon}).bindPopup("Korzeń Węża")
+        ],
+        KorzenGango: [
+            L.marker([400, 400], {icon: korzenGangoIcon}).bindPopup("Korzeń Gango")
+        ],
+        Bez: [
+            L.marker([600, 600], {icon: bezIcon}).bindPopup("Bez")
+        ],
+        KwiatKaki: [
+            L.marker([800, 800], {icon: kwiatKakiIcon}).bindPopup("Kwiat Kaki")
         ],
         Chests: [
-            L.marker([630, 450], {icon: chestIcon}).bindPopup("Skrzynia-1"),
-            L.marker([810, 760], {icon: chestIcon}).bindPopup("Skrzynia-2"),
+            L.marker([206, 551], {icon: chestIcon}).bindPopup("Skrzynia 1"),
+            L.marker([240, 765], {icon: chestIcon}).bindPopup("Skrzynia 2"),
         ],
         Emir: [
-            L.marker([120, 500], {icon: L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: red; border-radius: 50%;"></div>'})}).bindPopup("Emir")
+            L.circle([266, 530], {radius: 100, color: 'red', fillColor: 'red', fillOpacity: 0.2}).bindPopup("Emir - Zasięg"),
+            L.circle([458, 240], {radius: 100, color: 'red', fillColor: 'red', fillOpacity: 0.2}).bindPopup("Emir - Zasięg"),
         ],
         Tarantula: [
-            L.marker([820, 340], {icon: L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: black; border-radius: 50%;"></div>'})}).bindPopup("Tarantula")
+            L.circle([780, 588], {radius: 100, color: 'black', fillColor: 'black', fillOpacity: 0.2}).bindPopup("Tarantula - Zasięg"),
+            L.circle([228, 860], {radius: 100, color: 'black', fillColor: 'black', fillOpacity: 0.2}).bindPopup("Tarantula - Zasięg"),
         ]
     };
 
-    // Funkcja do przełączania widoczności markerów
-    function toggleMarkers(type) {
-        markers[type].forEach(marker => {
-            if (marker._icon.style.display === 'none') {
-                marker.addTo(map);
-            } else {
-                marker.remove();
-            }
-        });
+    // Funkcja do przełączania markerów
+    function toggleMarkers(id) {
+        if (document.getElementById('toggle' + id).checked) {
+            markers[id].forEach(marker => marker.addTo(map));
+        } else {
+            markers[id].forEach(marker => map.removeLayer(marker));
+        }
     }
 
-    // Obsługa przełączania markerów dla różnych typów
+    // Nasłuchiwanie zdarzeń checkboxów
     document.getElementById('toggleMetin40').addEventListener('change', () => toggleMarkers('Metin40'));
     document.getElementById('toggleMetin45').addEventListener('change', () => toggleMarkers('Metin45'));
     document.getElementById('toggleMetin50').addEventListener('change', () => toggleMarkers('Metin50'));
-    document.getElementById('toggleBrzoskwinia').addEventListener('change', () => toggleMarkers('Plants'));
-    document.getElementById('togglePokrzywa').addEventListener('change', () => toggleMarkers('Plants'));
+    document.getElementById('toggleBrzoskwinia').addEventListener('change', () => toggleMarkers('Brzoskwinia'));
+    document.getElementById('togglePokrzywa').addEventListener('change', () => toggleMarkers('Pokrzywa'));
+    document.getElementById('toggleKorzenWeza').addEventListener('change', () => toggleMarkers('KorzenWeza'));
+    document.getElementById('toggleKorzenGango').addEventListener('change', () => toggleMarkers('KorzenGango'));
+    document.getElementById('toggleBez').addEventListener('change', () => toggleMarkers('Bez'));
+    document.getElementById('toggleKwiatKaki').addEventListener('change', () => toggleMarkers('KwiatKaki'));
     document.getElementById('toggleChests').addEventListener('change', () => toggleMarkers('Chests'));
     document.getElementById('toggleEmir').addEventListener('change', () => toggleMarkers('Emir'));
     document.getElementById('toggleTarantula').addEventListener('change', () => toggleMarkers('Tarantula'));
 
-    // Funkcja do przełączania tabów
-    function showTab(tab) {
-        document.querySelectorAll('.tab-content').forEach(function(content) {
-            content.classList.remove('active');
-        });
-        document.getElementById(tab).classList.add('active');
+    // Funkcja do przełączania zakładek
+    function showTab(tabId) {
+        var tabs = document.querySelectorAll('.tab-content');
+        tabs.forEach(tab => tab.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
     }
+
+     // Nasłuchiwanie kliknięć na mapie
+    map.on('click', function(e) {
+        var latlng = e.latlng;  // Współrzędne kliknięcia
+        console.log('Kliknięto w: ' + latlng.lat + ', ' + latlng.lng);
+        // Możesz teraz dodać marker w tym miejscu
+        L.marker([latlng.lat, latlng.lng]).addTo(map).bindPopup("Nowy punkt: " + latlng.lat + ", " + latlng.lng).openPopup();
+    });
 </script>
 
 </body>
