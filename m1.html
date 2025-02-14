@@ -152,10 +152,12 @@
     map.fitBounds(bounds);
 
     // Ikony markerów
-    var metin40Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: purple; border-radius: 50%;"></div>'});
-var metin45Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: blue; border-radius: 50%;"></div>'});
-var metin50Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #ff69b4; border-radius: 50%;"></div>'});
+    var metin5Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: purple; border-radius: 50%;"></div>'});
+var metin10Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: blue; border-radius: 50%;"></div>'});
+var metin15Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #ff69b4; border-radius: 50%;"></div>'});
+var metin20Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #ff69b4; border-radius: 50%;"></div>'});
 
+    
 var brzoskwiniaIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #f8c8d8; border-radius: 50%;"></div>'});
 var pokrzywaIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: darkgreen; border-radius: 50%;"></div>'});
 var korzenWezaIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #b8860b; border-radius: 50%;"></div>'});
@@ -163,34 +165,24 @@ var korzenGangoIcon = L.divIcon({className: 'custom-icon', html: '<div style="wi
 var bezIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: black; border-radius: 50%;"></div>'});
 var kwiatKakiIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: yellow; border-radius: 50%;"></div>'});
 
-
-    
-    var chestIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 30px; height: 30px; background-color: brown; border-radius: 5px;"></div>'});
+var chestIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 30px; height: 30px; background-color: brown; border-radius: 5px;"></div>'});
 
     var markers = {
-        Metin40: [
+        Metin5: [
             L.marker([362, 654], {icon: metin40Icon}).bindPopup("Metin40-1"),
-            L.marker([594, 89], {icon: metin40Icon}).bindPopup("Metin40-1"),
-            L.marker([452, 665], {icon: metin40Icon}).bindPopup("Metin40-1"),
-            L.marker([236, 603], {icon: metin40Icon}).bindPopup("Metin40-1"),
-            L.marker([787, 569], {icon: metin40Icon}).bindPopup("Metin40-1"),
+
         ],
-        Metin45: [
-            L.marker([208, 95], {icon: metin45Icon}).bindPopup("Metin45-1"),
-            L.marker([212, 187], {icon: metin45Icon}).bindPopup("Metin45-2"),
-            L.marker([258, 518], {icon: metin45Icon}).bindPopup("Metin45-3"),
-            L.marker([431, 105], {icon: metin45Icon}).bindPopup("Metin45-4"),
-            L.marker([254, 378], {icon: metin45Icon}).bindPopup("Metin45-5"),
-            L.marker([690, 917], {icon: metin45Icon}).bindPopup("Metin45-5"),
-            L.marker([556, 749], {icon: metin45Icon}).bindPopup("Metin45-5"),
-            L.marker([417, 235], {icon: metin45Icon}).bindPopup("Metin45-5"),
+        Metin10: [
+
         ],
-        Metin50: [
-            L.marker([502, 391], {icon: metin50Icon}).bindPopup("Metin50-1"),
-            L.marker([349, 647], {icon: metin50Icon}).bindPopup("Metin50-1"),
-            L.marker([455, 621], {icon: metin50Icon}).bindPopup("Metin50-1"),
-            L.marker([422, 110], {icon: metin50Icon}).bindPopup("Metin50-1"),
+        Metin15: [
+
         ],
+        Metin20: [
+
+        ],
+
+        
         Brzoskwinia: [
             L.marker([500, 500], {icon: brzoskwiniaIcon}).bindPopup("Brzoskwinia"),
             L.marker([510, 510], {icon: brzoskwiniaIcon}).bindPopup("Brzoskwinia")
@@ -216,7 +208,60 @@ var kwiatKakiIcon = L.divIcon({className: 'custom-icon', html: '<div style="widt
             L.marker([240, 765], {icon: chestIcon}).bindPopup("Skrzynia 2"),
         ],
         Emir: [
-            L.circle([266, 530], {radius: 100, color: 'red', fillColor: 'red', fillOpacity: 0.2}).bindPopup("Emir - Zasięg"),
+   <script>
+    var map = L.map('map', { crs: L.CRS.Simple, minZoom: -2, maxZoom: 2 });
+    var bounds = [[0, 0], [1000, 1000]]; // Określ granice mapy
+    L.imageOverlay('m1.jpg', bounds).addTo(map);
+    map.setView([500, 500], 1); // Ustawienie początkowego widoku na środek mapy
+
+    var bosses = {
+        CungMok: [
+            L.circle([400, 450], { radius: 100, color: 'red', fillColor: 'red', fillOpacity: 0.2 }).bindPopup("Cung Mok - Zasięg"),
+            L.circle([600, 550], { radius: 100, color: 'red', fillColor: 'red', fillOpacity: 0.2 }).bindPopup("Cung Mok - Zasięg")
+        ],
+        MuRang: [
+            L.circle([350, 350], { radius: 100, color: 'green', fillColor: 'green', fillOpacity: 0.2 }).bindPopup("Mu Rang - Zasięg"),
+            L.circle([650, 450], { radius: 100, color: 'green', fillColor: 'green', fillOpacity: 0.2 }).bindPopup("Mu Rang - Zasięg")
+        ],
+        JugHyui: [
+            L.circle([500, 300], { radius: 100, color: 'blue', fillColor: 'blue', fillOpacity: 0.2 }).bindPopup("Jug Hyui - Zasięg"),
+            L.circle([450, 600], { radius: 100, color: 'blue', fillColor: 'blue', fillOpacity: 0.2 }).bindPopup("Jug Hyui - Zasięg")
+        ],
+        JoungYi: [
+            L.circle([750, 300], { radius: 100, color: 'purple', fillColor: 'purple', fillOpacity: 0.2 }).bindPopup("Joung Yi - Zasięg"),
+            L.circle([200, 700], { radius: 100, color: 'purple', fillColor: 'purple', fillOpacity: 0.2 }).bindPopup("Joung Yi - Zasięg")
+        ],
+        LiAn: [
+            L.circle([200, 450], { radius: 100, color: 'orange', fillColor: 'orange', fillOpacity: 0.2 }).bindPopup("Li An Bera - Zasięg"),
+            L.circle([800, 250], { radius: 100, color: 'orange', fillColor: 'orange', fillOpacity: 0.2 }).bindPopup("Li An Bera - Zasięg")
+        ],
+        Bera: [
+            L.circle([200, 450], { radius: 100, color: 'orange', fillColor: 'orange', fillOpacity: 0.2 }).bindPopup("Li An Bera - Zasięg"),
+            L.circle([800, 250], { radius: 100, color: 'orange', fillColor: 'orange', fillOpacity: 0.2 }).bindPopup("Li An Bera - Zasięg")
+        ],
+        
+        Lykos: [
+            L.circle([550, 800], { radius: 100, color: 'yellow', fillColor: 'yellow', fillOpacity: 0.2 }).bindPopup("Lykos - Zasięg"),
+            L.circle([350, 200], { radius: 100, color: 'yellow', fillColor: 'yellow', fillOpacity: 0.2 }).bindPopup("Lykos - Zasięg")
+        ],
+        Scrofa: [
+            L.circle([650, 750], { radius: 100, color: 'pink', fillColor: 'pink', fillOpacity: 0.2 }).bindPopup("Scrofa - Zasięg"),
+            L.circle([150, 250], { radius: 100, color: 'pink', fillColor: 'pink', fillOpacity: 0.2 }).bindPopup("Scrofa - Zasięg")
+        ],
+        Tigris: [
+            L.circle([800, 600], { radius: 100, color: 'black', fillColor: 'black', fillOpacity: 0.2 }).bindPopup("Tigris - Zasięg"),
+            L.circle([300, 350], { radius: 100, color: 'black', fillColor: 'black', fillOpacity: 0.2 }).bindPopup("Tigris - Zasięg")
+        ]
+    };
+
+    // Dodanie okręgów do mapy
+    for (var boss in bosses) {
+        bosses[boss].forEach(function(circle) {
+            circle.addTo(map);
+        });
+    }
+</script>
+         L.circle([266, 530], {radius: 100, color: 'red', fillColor: 'red', fillOpacity: 0.2}).bindPopup("Emir - Zasięg"),
             L.circle([458, 240], {radius: 100, color: 'red', fillColor: 'red', fillOpacity: 0.2}).bindPopup("Emir - Zasięg"),
         ],
         Tarantula: [
