@@ -224,6 +224,18 @@
     document.getElementById('toggleMetin50').addEventListener('change', () => toggleMarkers('Metin50'));
     document.getElementById('toggleBrzoskwinia').addEventListener('change', () => toggleMarkers('Plants'));
     document.getElementById('togglePokrzywa').addEventListener('change', () => toggleMarkers('Plants'));
+    document.getElementById('togglekorzenWeza').addEventListener('change', () => toggleMarkers('Plants'));
+    document.getElementById('togglekorzenGango').addEventListener('change', () => toggleMarkers('Plants'));
+    document.getElementById('togglebez').addEventListener('change', () => toggleMarkers('Plants'));
+    document.getElementById('togglekwiatKaki').addEventListener('change', () => toggleMarkers('Plants'));
+
+     L.marker([300, 600], {icon: korzenWezaIcon}).bindPopup("Korzeń Węża"),
+            L.marker([400, 400], {icon: korzenGangoIcon}).bindPopup("Korzeń Gango"),
+            L.marker([600, 300], {icon: bezIcon}).bindPopup("Bez"),
+            L.marker([200, 200], {icon: kwiatKakiIcon}).bindPopup("Kwiat Kaki")
+
+
+    
     document.getElementById('toggleChests').addEventListener('change', () => toggleMarkers('Chests'));
     document.getElementById('toggleEmir').addEventListener('change', () => toggleMarkers('Emir'));
     document.getElementById('toggleTarantula').addEventListener('change', () => toggleMarkers('Tarantula'));
