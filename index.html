@@ -151,14 +151,10 @@
     var metin45Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: lightblue; border-radius: 50%;"></div>'});
     var metin50Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: pink; border-radius: 50%;"></div>'});
     
-    var brzoskwiniaIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: orange; border-radius: 50%;"></div>'});
-    var pokrzywaIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: green; border-radius: 50%;"></div>'});
-    var korzenWezaIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: purple; border-radius: 50%;"></div>'});
-    var korzenGangoIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: blue; border-radius: 50%;"></div>'});
-    var bezIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: pink; border-radius: 50%;"></div>'});
-    var kwiatKakiIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: yellow; border-radius: 50%;"></div>'});
-
-
+    var plantIcons = {
+        brzoskwinia: L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: orange; border-radius: 50%;"></div>'}),
+        pokrzywa: L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: green; border-radius: 50%;"></div>'})
+    };
     
     var chestIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 30px; height: 30px; background-color: brown; border-radius: 5px;"></div>'});
 
@@ -181,20 +177,15 @@
             L.marker([417, 235], {icon: metin45Icon}).bindPopup("Metin45-5"),
         ],
         Metin50: [
-  //          L.marker([502, 391], {icon: metin50Icon}).bindPopup("Metin50-1"),
+            L.marker([502, 391], {icon: metin50Icon}).bindPopup("Metin50-1"),
             L.marker([349, 647], {icon: metin50Icon}).bindPopup("Metin50-1"),
             L.marker([455, 621], {icon: metin50Icon}).bindPopup("Metin50-1"),
             L.marker([422, 110], {icon: metin50Icon}).bindPopup("Metin50-1"),
         ],
         Plants: [
-            L.marker([500, 500], {icon: brzoskwiniaIcon}).bindPopup("Brzoskwinia"),
-            L.marker([700, 700], {icon: pokrzywaIcon}).bindPopup("Pokrzywa"),
-            L.marker([300, 600], {icon: korzenWezaIcon}).bindPopup("Korzeń Węża"),
-            L.marker([400, 400], {icon: korzenGangoIcon}).bindPopup("Korzeń Gango"),
-            L.marker([600, 300], {icon: bezIcon}).bindPopup("Bez"),
-            L.marker([200, 200], {icon: kwiatKakiIcon}).bindPopup("Kwiat Kaki")
+            L.marker([500, 500], {icon: plantIcons.brzoskwinia}).bindPopup("Brzoskwinia"),
+            L.marker([700, 700], {icon: plantIcons.pokrzywa}).bindPopup("Pokrzywa")
         ],
-
         Chests: [
             L.marker([206, 551], {icon: chestIcon}).bindPopup("Skrzynia 1"),
             L.marker([240, 765], {icon: chestIcon}).bindPopup("Skrzynia 2"),
@@ -224,10 +215,6 @@
     document.getElementById('toggleMetin50').addEventListener('change', () => toggleMarkers('Metin50'));
     document.getElementById('toggleBrzoskwinia').addEventListener('change', () => toggleMarkers('Plants'));
     document.getElementById('togglePokrzywa').addEventListener('change', () => toggleMarkers('Plants'));
-    document.getElementById('togglekorzenWeza').addEventListener('change', () => toggleMarkers('Plants'));
-    document.getElementById('togglekorzenGango').addEventListener('change', () => toggleMarkers('Plants'));
-    document.getElementById('togglebez').addEventListener('change', () => toggleMarkers('Plants'));
-    document.getElementById('togglekwiatKaki').addEventListener('change', () => toggleMarkers('Plants'));
     document.getElementById('toggleChests').addEventListener('change', () => toggleMarkers('Chests'));
     document.getElementById('toggleEmir').addEventListener('change', () => toggleMarkers('Emir'));
     document.getElementById('toggleTarantula').addEventListener('change', () => toggleMarkers('Tarantula'));
