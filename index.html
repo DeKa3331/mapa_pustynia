@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <style>
         body {
-            background-color: blue; /* Czarne tło strony */
+            background-color: black; /* Czarne tło strony */
             color: white; /* Biały tekst */
         }
         
@@ -130,13 +130,18 @@
 <div id="legend">
     <strong>Legenda</strong>
     <div><span class="legend-icon" style="background-color: green;"></span> Metin40</div>
-    <div><span class="legend-icon" style="background-color: lightblue;"></span> Metin45</div>
-    <div><span class="legend-icon" style="background-color: pink;"></span> Metin50</div>
-    <div><span class="legend-icon" style="background-color: orange;"></span> Brzoskwinia (Roślina)</div>
-    <div><span class="legend-icon" style="background-color: green;"></span> Pokrzywa (Roślina)</div>
-    <div><span class="legend-icon-square" style="background-color: brown;"></span> Skrzynia</div>
-    <div><span class="legend-icon" style="background-color: red;"></span> Emir (Zasięg)</div>
-    <div><span class="legend-icon" style="background-color: black;"></span> Tarantula (Zasięg)</div>
+<div><span class="legend-icon" style="background-color: blue;"></span> Metin45</div>
+<div><span class="legend-icon" style="background-color: purple;"></span> Metin50</div>
+<div><span class="legend-icon" style="background-color: yellow;"></span> Brzoskwinia (Roślina)</div>
+<div><span class="legend-icon" style="background-color: darkgreen;"></span> Pokrzywa (Roślina)</div>
+<div><span class="legend-icon" style="background-color: brown;"></span> Korzeń Węża</div>
+<div><span class="legend-icon" style="background-color: darkviolet;"></span> Korzeń Gango</div>
+<div><span class="legend-icon" style="background-color: orange;"></span> Bez</div>
+<div><span class="legend-icon" style="background-color: red;"></span> Kwiat Kaki</div>
+<div><span class="legend-icon-square" style="background-color: gray;"></span> Skrzynia</div>
+<div><span class="legend-icon" style="background-color: red;"></span> Emir (Zasięg)</div>
+<div><span class="legend-icon" style="background-color: black;"></span> Tarantula (Zasięg)</div>
+
 </div>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -148,15 +153,16 @@
 
     // Ikony markerów
     var metin40Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: green; border-radius: 50%;"></div>'});
-    var metin45Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: lightblue; border-radius: 50%;"></div>'});
-    var metin50Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: pink; border-radius: 50%;"></div>'});
+var metin45Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: blue; border-radius: 50%;"></div>'});
+var metin50Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: purple; border-radius: 50%;"></div>'});
 
-    var brzoskwiniaIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: pink; border-radius: 50%;"></div>'});
-    var pokrzywaIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: pink; border-radius: 50%;"></div>'});
-    var korzenWezaIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: pink; border-radius: 50%;"></div>'});
-    var korzenGangoIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: pink; border-radius: 50%;"></div>'});
-    var bezIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: pink; border-radius: 50%;"></div>'});
-    var kwiatKakiIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: pink; border-radius: 50%;"></div>'});
+var brzoskwiniaIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: yellow; border-radius: 50%;"></div>'});
+var pokrzywaIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: darkgreen; border-radius: 50%;"></div>'});
+var korzenWezaIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: brown; border-radius: 50%;"></div>'});
+var korzenGangoIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: darkviolet; border-radius: 50%;"></div>'});
+var bezIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: orange; border-radius: 50%;"></div>'});
+var kwiatKakiIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: red; border-radius: 50%;"></div>'});
+
 
     
     var chestIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 30px; height: 30px; background-color: brown; border-radius: 5px;"></div>'});
