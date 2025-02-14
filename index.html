@@ -111,6 +111,7 @@
     <div id="bossy" class="tab-content">
         <label><input type="checkbox" id="toggleEmir"> Emir</label>
         <label><input type="checkbox" id="toggleTarantula"> Tarantula</label>
+        <label><input type="checkbox" id="toggleOlbrzymiZolw"> Olbrzymi Żółw</label>
     </div>
 </div>
 
@@ -141,6 +142,7 @@
 <div><span class="legend-icon-square" style="background-color: brown;"></span> Skrzynia</div>
 <div><span class="legend-icon" style="background-color: red;"></span> Emir</div>
 <div><span class="legend-icon" style="background-color: #fffffe;"></span> Tarantula</div>
+<div><span class="legend-icon" style="background-color: #4682B4;"></span> Olbrzymi Żółw</div>  
 
 </div>
 
@@ -162,6 +164,8 @@ var korzenWezaIcon = L.divIcon({className: 'custom-icon', html: '<div style="wid
 var korzenGangoIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #ff8c00; border-radius: 50%;"></div>'});
 var bezIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: black; border-radius: 50%;"></div>'});
 var kwiatKakiIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: yellow; border-radius: 50%;"></div>'});
+
+    
 
 
     
@@ -221,12 +225,16 @@ var kwiatKakiIcon = L.divIcon({className: 'custom-icon', html: '<div style="widt
             L.marker([486, 533], {icon: chestIcon}).bindPopup("Skrzynia 2"),
         ],
         Emir: [
-            L.circle([266, 530], {radius: 100, color: 'red', fillColor: 'red', fillOpacity: 0.2}).bindPopup("Emir - Zasięg"),
-            L.circle([458, 240], {radius: 100, color: 'red', fillColor: 'red', fillOpacity: 0.2}).bindPopup("Emir - Zasięg"),
+            L.circle([266, 530], {radius: 100, color: 'red', fillColor: 'red', fillOpacity: 0.2}).bindPopup("Emir"),
+            L.circle([458, 240], {radius: 100, color: 'red', fillColor: 'red', fillOpacity: 0.2}).bindPopup("Emir"),
         ],
         Tarantula: [
-            L.circle([780, 588], {radius: 100, color: 'black', fillColor: 'black', fillOpacity: 0.2}).bindPopup("Tarantula - Zasięg"),
-            L.circle([228, 860], {radius: 100, color: 'black', fillColor: 'black', fillOpacity: 0.2}).bindPopup("Tarantula - Zasięg"),
+            L.circle([780, 588], {radius: 100, color: 'black', fillColor: 'black', fillOpacity: 0.2}).bindPopup("Tarantula"),
+            L.circle([228, 860], {radius: 100, color: 'black', fillColor: 'black', fillOpacity: 0.2}).bindPopup("Tarantula"),
+        ],
+        OlbrzymiZolw: [
+            L.circle([780, 588], {radius: 100, color: 'black', fillColor: '#4682B4', fillOpacity: 0.2}).bindPopup("OlbrzymiZolw"),
+            L.circle([228, 860], {radius: 100, color: 'black', fillColor: '#4682B4', fillOpacity: 0.2}).bindPopup("OlbrzymiZolw"),
         ]
     };
 
@@ -252,6 +260,7 @@ var kwiatKakiIcon = L.divIcon({className: 'custom-icon', html: '<div style="widt
     document.getElementById('toggleChests').addEventListener('change', () => toggleMarkers('Chests'));
     document.getElementById('toggleEmir').addEventListener('change', () => toggleMarkers('Emir'));
     document.getElementById('toggleTarantula').addEventListener('change', () => toggleMarkers('Tarantula'));
+    document.getElementById('toggleOlbrzymiZolw').addEventListener('change', () => toggleMarkers('OlbrzymiZolw'));
 
     // Funkcja do przełączania zakładek
     function showTab(tabId) {
