@@ -92,7 +92,6 @@
     <div id="metiny" class="tab-content">
         <label><input type="checkbox" id="toggleMetin40"> Metin40</label>
         <label><input type="checkbox" id="toggleMetin45"> Metin45</label>
-        <label><input type="checkbox" id="toggleMetin50"> Metin50</label>
     </div>
 
     <div id="rosliny" class="tab-content">
@@ -109,8 +108,8 @@
     </div>
 
     <div id="bossy" class="tab-content">
-        <label><input type="checkbox" id="toggleEmir"> Emir</label>
-        <label><input type="checkbox" id="toggleTarantula"> Tarantula</label>
+        <label><input type="checkbox" id="toggleGromoGrzmot"> GromoGrzmot</label>
+        <label><input type="checkbox" id="toggleWodzOrkow"> WodzOrkow</label>
     </div>
 </div>
 
@@ -131,7 +130,6 @@
     <strong>Legenda</strong>
 <div><span class="legend-icon" style="background-color: purple;"></span> Metin40</div>
 <div><span class="legend-icon" style="background-color: blue;"></span> Metin45</div>
-<div><span class="legend-icon" style="background-color: #ff69b4;"></span> Metin50</div>
 <div><span class="legend-icon" style="background-color: #f8c8d8;"></span> Brzoskwinia</div>
 <div><span class="legend-icon" style="background-color: darkgreen;"></span> Pokrzywa</div>
 <div><span class="legend-icon" style="background-color: #b8860b"></span> Korzeń Węża</div>
@@ -139,8 +137,8 @@
 <div><span class="legend-icon" style="background-color: black;"></span> Bez</div>
 <div><span class="legend-icon" style="background-color: yellow;"></span> Kwiat Kaki</div>
 <div><span class="legend-icon-square" style="background-color: brown;"></span> Skrzynia</div>
-<div><span class="legend-icon" style="background-color: red;"></span> Emir</div>
-<div><span class="legend-icon" style="background-color: #fffffe;"></span> Tarantula</div>
+<div><span class="legend-icon" style="background-color: red;"></span> GromoGrzmot</div>
+<div><span class="legend-icon" style="background-color: #fffffe;"></span> Wódz Orków</div>
 
 </div>
 
@@ -154,7 +152,6 @@
     // Ikony markerów
     var metin40Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: purple; border-radius: 50%;"></div>'});
 var metin45Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: blue; border-radius: 50%;"></div>'});
-var metin50Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #ff69b4; border-radius: 50%;"></div>'});
 
 var brzoskwiniaIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #f8c8d8; border-radius: 50%;"></div>'});
 var pokrzywaIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: darkgreen; border-radius: 50%;"></div>'});
@@ -169,59 +166,34 @@ var kwiatKakiIcon = L.divIcon({className: 'custom-icon', html: '<div style="widt
 
     var markers = {
         Metin40: [
-            L.marker([362, 654], {icon: metin40Icon}).bindPopup("Metin40-1"),
-            L.marker([594, 89], {icon: metin40Icon}).bindPopup("Metin40-1"),
-            L.marker([452, 665], {icon: metin40Icon}).bindPopup("Metin40-1"),
-            L.marker([236, 603], {icon: metin40Icon}).bindPopup("Metin40-1"),
-            L.marker([787, 569], {icon: metin40Icon}).bindPopup("Metin40-1"),
+           // L.marker([362, 654], {icon: metin40Icon}).bindPopup("Metin40-1"),
+
         ],
         Metin45: [
-            L.marker([208, 95], {icon: metin45Icon}).bindPopup("Metin45-1"),
-            L.marker([212, 187], {icon: metin45Icon}).bindPopup("Metin45-2"),
-            L.marker([258, 518], {icon: metin45Icon}).bindPopup("Metin45-3"),
-            L.marker([431, 105], {icon: metin45Icon}).bindPopup("Metin45-4"),
-            L.marker([254, 378], {icon: metin45Icon}).bindPopup("Metin45-5"),
-            L.marker([690, 917], {icon: metin45Icon}).bindPopup("Metin45-5"),
-            L.marker([556, 749], {icon: metin45Icon}).bindPopup("Metin45-5"),
-            L.marker([417, 235], {icon: metin45Icon}).bindPopup("Metin45-5"),
-        ],
-        Metin50: [
-            L.marker([502, 391], {icon: metin50Icon}).bindPopup("Metin50-1"),
-            L.marker([349, 647], {icon: metin50Icon}).bindPopup("Metin50-1"),
-            L.marker([455, 621], {icon: metin50Icon}).bindPopup("Metin50-1"),
-            L.marker([422, 110], {icon: metin50Icon}).bindPopup("Metin50-1"),
+
         ],
         Brzoskwinia: [
-            L.marker([500, 500], {icon: brzoskwiniaIcon}).bindPopup("Brzoskwinia"),
-            L.marker([510, 510], {icon: brzoskwiniaIcon}).bindPopup("Brzoskwinia")
         ],
         Pokrzywa: [
-            L.marker([700, 700], {icon: pokrzywaIcon}).bindPopup("Pokrzywa"),
-            L.marker([710, 710], {icon: pokrzywaIcon}).bindPopup("Pokrzywa")
         ],
         KorzenWeza: [
-            L.marker([300, 300], {icon: korzenWezaIcon}).bindPopup("Korzeń Węża")
         ],
         KorzenGango: [
-            L.marker([400, 400], {icon: korzenGangoIcon}).bindPopup("Korzeń Gango")
         ],
         Bez: [
-            L.marker([600, 600], {icon: bezIcon}).bindPopup("Bez")
         ],
         KwiatKaki: [
-            L.marker([800, 800], {icon: kwiatKakiIcon}).bindPopup("Kwiat Kaki")
         ],
         Chests: [
-            L.marker([206, 551], {icon: chestIcon}).bindPopup("Skrzynia 1"),
-            L.marker([240, 765], {icon: chestIcon}).bindPopup("Skrzynia 2"),
+            
         ],
-        Emir: [
-            L.circle([266, 530], {radius: 100, color: 'red', fillColor: 'red', fillOpacity: 0.2}).bindPopup("Emir - Zasięg"),
-            L.circle([458, 240], {radius: 100, color: 'red', fillColor: 'red', fillOpacity: 0.2}).bindPopup("Emir - Zasięg"),
+        GromoGrzmot: [
+            L.circle([266, 530], {radius: 100, color: 'red', fillColor: 'red', fillOpacity: 0.2}).bindPopup("GromoGrzmot"),
+            L.circle([458, 240], {radius: 100, color: 'red', fillColor: 'red', fillOpacity: 0.2}).bindPopup("GromoGrzmot"),
         ],
-        Tarantula: [
-            L.circle([780, 588], {radius: 100, color: 'black', fillColor: 'black', fillOpacity: 0.2}).bindPopup("Tarantula - Zasięg"),
-            L.circle([228, 860], {radius: 100, color: 'black', fillColor: 'black', fillOpacity: 0.2}).bindPopup("Tarantula - Zasięg"),
+        WodzOrkow: [
+            L.circle([780, 588], {radius: 100, color: 'black', fillColor: 'black', fillOpacity: 0.2}).bindPopup("WodzOrkow"),
+            L.circle([228, 860], {radius: 100, color: 'black', fillColor: 'black', fillOpacity: 0.2}).bindPopup("WodzOrkow"),
         ]
     };
 
@@ -237,7 +209,6 @@ var kwiatKakiIcon = L.divIcon({className: 'custom-icon', html: '<div style="widt
     // Nasłuchiwanie zdarzeń checkboxów
     document.getElementById('toggleMetin40').addEventListener('change', () => toggleMarkers('Metin40'));
     document.getElementById('toggleMetin45').addEventListener('change', () => toggleMarkers('Metin45'));
-    document.getElementById('toggleMetin50').addEventListener('change', () => toggleMarkers('Metin50'));
     document.getElementById('toggleBrzoskwinia').addEventListener('change', () => toggleMarkers('Brzoskwinia'));
     document.getElementById('togglePokrzywa').addEventListener('change', () => toggleMarkers('Pokrzywa'));
     document.getElementById('toggleKorzenWeza').addEventListener('change', () => toggleMarkers('KorzenWeza'));
@@ -245,8 +216,8 @@ var kwiatKakiIcon = L.divIcon({className: 'custom-icon', html: '<div style="widt
     document.getElementById('toggleBez').addEventListener('change', () => toggleMarkers('Bez'));
     document.getElementById('toggleKwiatKaki').addEventListener('change', () => toggleMarkers('KwiatKaki'));
     document.getElementById('toggleChests').addEventListener('change', () => toggleMarkers('Chests'));
-    document.getElementById('toggleEmir').addEventListener('change', () => toggleMarkers('Emir'));
-    document.getElementById('toggleTarantula').addEventListener('change', () => toggleMarkers('Tarantula'));
+    document.getElementById('toggleGromoGrzmot').addEventListener('change', () => toggleMarkers('GromoGrzmot'));
+    document.getElementById('toggleWodzOrkow').addEventListener('change', () => toggleMarkers('WodzOrkow'));
 
     // Funkcja do przełączania zakładek
     function showTab(tabId) {
