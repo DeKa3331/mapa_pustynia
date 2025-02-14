@@ -90,17 +90,16 @@
     </ul>
 
     <div id="metiny" class="tab-content">
-        <label><input type="checkbox" id="toggleMetin40"> Metin40</label>
-        <label><input type="checkbox" id="toggleMetin45"> Metin45</label>
-        <label><input type="checkbox" id="toggleMetin50"> Metin50</label>
+        <label><input type="checkbox" id="toggleMetin55"> Metin55</label>
+        <label><input type="checkbox" id="toggleMetin55"> Metin60</label>
+        <label><input type="checkbox" id="toggleMetin65"> Metin65</label>
     </div>
 
     <div id="rosliny" class="tab-content">
-        <label><input type="checkbox" id="toggleBrzoskwinia"> Brzoskwinia</label>
+        <label><input type="checkbox" id="toggleGrzybTue"> Grzyb Tue</label>
         <label><input type="checkbox" id="togglePokrzywa"> Pokrzywa</label>
-        <label><input type="checkbox" id="toggleKorzenWeza"> Korzeń Węża</label>
+        <label><input type="checkbox" id="toggleSnieznyKwiat"> Snieżny Kwiat</label>
         <label><input type="checkbox" id="toggleKorzenGango"> Korzeń Gango</label>
-        <label><input type="checkbox" id="toggleBez"> Bez</label>
         <label><input type="checkbox" id="toggleKwiatKaki"> Kwiat Kaki</label>
     </div>
 
@@ -109,8 +108,9 @@
     </div>
 
     <div id="bossy" class="tab-content">
-        <label><input type="checkbox" id="toggleEmir"> Emir</label>
-        <label><input type="checkbox" id="toggleTarantula"> Tarantula</label>
+        <label><input type="checkbox" id="toggleBehemot"> Górski Behemot</label>
+        <label><input type="checkbox" id="toggleArktyczneYeti"> Arktyczne Yeti</label>
+        <label><input type="checkbox" id="toggleDziewiecOgonow"> Dziewiec Ogonow</label>
     </div>
 </div>
 
@@ -132,16 +132,14 @@
 <div><span class="legend-icon" style="background-color: purple;"></span> Metin40</div>
 <div><span class="legend-icon" style="background-color: blue;"></span> Metin45</div>
 <div><span class="legend-icon" style="background-color: #ff69b4;"></span> Metin50</div>
-<div><span class="legend-icon" style="background-color: #f8c8d8;"></span> Brzoskwinia</div>
+<div><span class="legend-icon" style="background-color: #f8c8d8;"></span> Grzyb Tue</div>
 <div><span class="legend-icon" style="background-color: darkgreen;"></span> Pokrzywa</div>
-<div><span class="legend-icon" style="background-color: #b8860b"></span> Korzeń Węża</div>
+<div><span class="legend-icon" style="background-color: #b8860b"></span> Snieżny Kwiat</div>
 <div><span class="legend-icon" style="background-color: #ff8c00"></span> Korzeń Gango</div>
-<div><span class="legend-icon" style="background-color: black;"></span> Bez</div>
 <div><span class="legend-icon" style="background-color: yellow;"></span> Kwiat Kaki</div>
 <div><span class="legend-icon-square" style="background-color: brown;"></span> Skrzynia</div>
 <div><span class="legend-icon" style="background-color: red;"></span> Emir</div>
 <div><span class="legend-icon" style="background-color: #fffffe;"></span> Tarantula</div>
-
 </div>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -156,11 +154,10 @@
 var metin45Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: blue; border-radius: 50%;"></div>'});
 var metin50Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #ff69b4; border-radius: 50%;"></div>'});
 
-var brzoskwiniaIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #f8c8d8; border-radius: 50%;"></div>'});
+var grzybTueIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #f8c8d8; border-radius: 50%;"></div>'});
 var pokrzywaIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: darkgreen; border-radius: 50%;"></div>'});
-var korzenWezaIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #b8860b; border-radius: 50%;"></div>'});
+var snieznyKwiatIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #b8860b; border-radius: 50%;"></div>'});
 var korzenGangoIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #ff8c00; border-radius: 50%;"></div>'});
-var bezIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: black; border-radius: 50%;"></div>'});
 var kwiatKakiIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: yellow; border-radius: 50%;"></div>'});
 
 
@@ -168,61 +165,32 @@ var kwiatKakiIcon = L.divIcon({className: 'custom-icon', html: '<div style="widt
     var chestIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 30px; height: 30px; background-color: brown; border-radius: 5px;"></div>'});
 
     var markers = {
-        Metin40: [
-            L.marker([362, 654], {icon: metin40Icon}).bindPopup("Metin40-1"),
-            L.marker([594, 89], {icon: metin40Icon}).bindPopup("Metin40-1"),
-            L.marker([452, 665], {icon: metin40Icon}).bindPopup("Metin40-1"),
-            L.marker([236, 603], {icon: metin40Icon}).bindPopup("Metin40-1"),
-            L.marker([787, 569], {icon: metin40Icon}).bindPopup("Metin40-1"),
+        Metin55: [
+            L.marker([617, 547], {icon: metin55Icon}).bindPopup("Metin55-1"),
         ],
-        Metin45: [
-            L.marker([208, 95], {icon: metin45Icon}).bindPopup("Metin45-1"),
-            L.marker([212, 187], {icon: metin45Icon}).bindPopup("Metin45-2"),
-            L.marker([258, 518], {icon: metin45Icon}).bindPopup("Metin45-3"),
-            L.marker([431, 105], {icon: metin45Icon}).bindPopup("Metin45-4"),
-            L.marker([254, 378], {icon: metin45Icon}).bindPopup("Metin45-5"),
-            L.marker([690, 917], {icon: metin45Icon}).bindPopup("Metin45-5"),
-            L.marker([556, 749], {icon: metin45Icon}).bindPopup("Metin45-5"),
-            L.marker([417, 235], {icon: metin45Icon}).bindPopup("Metin45-5"),
+        Metin60: [
         ],
-        Metin50: [
-            L.marker([502, 391], {icon: metin50Icon}).bindPopup("Metin50-1"),
-            L.marker([349, 647], {icon: metin50Icon}).bindPopup("Metin50-1"),
-            L.marker([455, 621], {icon: metin50Icon}).bindPopup("Metin50-1"),
-            L.marker([422, 110], {icon: metin50Icon}).bindPopup("Metin50-1"),
+        Metin65: [
         ],
-        Brzoskwinia: [
-            L.marker([500, 500], {icon: brzoskwiniaIcon}).bindPopup("Brzoskwinia"),
-            L.marker([510, 510], {icon: brzoskwiniaIcon}).bindPopup("Brzoskwinia")
+        GrzybTue: [
         ],
         Pokrzywa: [
-            L.marker([700, 700], {icon: pokrzywaIcon}).bindPopup("Pokrzywa"),
-            L.marker([710, 710], {icon: pokrzywaIcon}).bindPopup("Pokrzywa")
         ],
-        KorzenWeza: [
-            L.marker([300, 300], {icon: korzenWezaIcon}).bindPopup("Korzeń Węża")
+        SnieznyKwiat: [
         ],
         KorzenGango: [
-            L.marker([400, 400], {icon: korzenGangoIcon}).bindPopup("Korzeń Gango")
-        ],
-        Bez: [
-            L.marker([600, 600], {icon: bezIcon}).bindPopup("Bez")
         ],
         KwiatKaki: [
-            L.marker([800, 800], {icon: kwiatKakiIcon}).bindPopup("Kwiat Kaki")
         ],
         Chests: [
-            L.marker([206, 551], {icon: chestIcon}).bindPopup("Skrzynia 1"),
-            L.marker([240, 765], {icon: chestIcon}).bindPopup("Skrzynia 2"),
         ],
-        Emir: [
-            L.circle([266, 530], {radius: 100, color: 'red', fillColor: 'red', fillOpacity: 0.2}).bindPopup("Emir - Zasięg"),
-            L.circle([458, 240], {radius: 100, color: 'red', fillColor: 'red', fillOpacity: 0.2}).bindPopup("Emir - Zasięg"),
+        Behemot: [
         ],
-        Tarantula: [
-            L.circle([780, 588], {radius: 100, color: 'black', fillColor: 'black', fillOpacity: 0.2}).bindPopup("Tarantula - Zasięg"),
-            L.circle([228, 860], {radius: 100, color: 'black', fillColor: 'black', fillOpacity: 0.2}).bindPopup("Tarantula - Zasięg"),
+        ArktyczneYeti: [
+        ],
+        DziewiecOgonow: [
         ]
+
     };
 
     // Funkcja do przełączania markerów
@@ -235,18 +203,19 @@ var kwiatKakiIcon = L.divIcon({className: 'custom-icon', html: '<div style="widt
     }
 
     // Nasłuchiwanie zdarzeń checkboxów
-    document.getElementById('toggleMetin40').addEventListener('change', () => toggleMarkers('Metin40'));
-    document.getElementById('toggleMetin45').addEventListener('change', () => toggleMarkers('Metin45'));
-    document.getElementById('toggleMetin50').addEventListener('change', () => toggleMarkers('Metin50'));
-    document.getElementById('toggleBrzoskwinia').addEventListener('change', () => toggleMarkers('Brzoskwinia'));
+    document.getElementById('toggleMetin55').addEventListener('change', () => toggleMarkers('Metin40'));
+    document.getElementById('toggleMetin60').addEventListener('change', () => toggleMarkers('Metin45'));
+    document.getElementById('toggleMetin65').addEventListener('change', () => toggleMarkers('Metin50'));
+    document.getElementById('toggleGrzybTue').addEventListener('change', () => toggleMarkers('GrzybTue'));
     document.getElementById('togglePokrzywa').addEventListener('change', () => toggleMarkers('Pokrzywa'));
-    document.getElementById('toggleKorzenWeza').addEventListener('change', () => toggleMarkers('KorzenWeza'));
+    document.getElementById('toggleSnieznyKwiat').addEventListener('change', () => toggleMarkers('SnieznyKwiat'));
     document.getElementById('toggleKorzenGango').addEventListener('change', () => toggleMarkers('KorzenGango'));
-    document.getElementById('toggleBez').addEventListener('change', () => toggleMarkers('Bez'));
     document.getElementById('toggleKwiatKaki').addEventListener('change', () => toggleMarkers('KwiatKaki'));
     document.getElementById('toggleChests').addEventListener('change', () => toggleMarkers('Chests'));
-    document.getElementById('toggleEmir').addEventListener('change', () => toggleMarkers('Emir'));
-    document.getElementById('toggleTarantula').addEventListener('change', () => toggleMarkers('Tarantula'));
+    document.getElementById('toggleBehemot').addEventListener('change', () => toggleMarkers('Behemot'));
+    document.getElementById('toggleArktyczneYeti').addEventListener('change', () => toggleMarkers('ArktyczneYeti'));
+    document.getElementById('toggleDziewiecOgonow').addEventListener('change', () => toggleMarkers('DziewiecOgonow'));
+    
 
     // Funkcja do przełączania zakładek
     function showTab(tabId) {
