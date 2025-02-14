@@ -150,15 +150,13 @@
     var metin40Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: green; border-radius: 50%;"></div>'});
     var metin45Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: lightblue; border-radius: 50%;"></div>'});
     var metin50Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: pink; border-radius: 50%;"></div>'});
-    
-    var plantIcons = {
-    brzoskwinia: L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: orange; border-radius: 50%;"></div>'}),
-    pokrzywa: L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: green; border-radius: 50%;"></div>'}),
-    korzenWeza: L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: purple; border-radius: 50%;"></div>'}),
-    korzenGango: L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: brown; border-radius: 50%;"></div>'}),
-    bez: L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: blue; border-radius: 50%;"></div>'}),
-    kwiatKaki: L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: pink; border-radius: 50%;"></div>'})
-};
+
+    var brzoskwiniaIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: pink; border-radius: 50%;"></div>'});
+    var pokrzywaIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: pink; border-radius: 50%;"></div>'});
+    var korzenWezaIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: pink; border-radius: 50%;"></div>'});
+    var korzenGangoIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: pink; border-radius: 50%;"></div>'});
+    var bezIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: pink; border-radius: 50%;"></div>'});
+    var kwiatKakiIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: pink; border-radius: 50%;"></div>'});
 
     
     var chestIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 30px; height: 30px; background-color: brown; border-radius: 5px;"></div>'});
@@ -187,9 +185,25 @@
             L.marker([455, 621], {icon: metin50Icon}).bindPopup("Metin50-1"),
             L.marker([422, 110], {icon: metin50Icon}).bindPopup("Metin50-1"),
         ],
-        Plants: [
-            L.marker([500, 500], {icon: plantIcons.brzoskwinia}).bindPopup("Brzoskwinia"),
-            L.marker([700, 700], {icon: plantIcons.pokrzywa}).bindPopup("Pokrzywa")
+        Brzoskwinia: [
+            L.marker([500, 500], {icon: plantIcons.Brzoskwinia}).bindPopup("Brzoskwinia"),
+            L.marker([510, 510], {icon: plantIcons.Brzoskwinia}).bindPopup("Brzoskwinia")
+        ],
+        Pokrzywa: [
+            L.marker([700, 700], {icon: plantIcons.Pokrzywa}).bindPopup("Pokrzywa"),
+            L.marker([710, 710], {icon: plantIcons.Pokrzywa}).bindPopup("Pokrzywa")
+        ],
+        KorzenWeza: [
+            L.marker([300, 300], {icon: plantIcons.KorzenWeza}).bindPopup("Korzeń Węża")
+        ],
+        KorzenGango: [
+            L.marker([400, 400], {icon: plantIcons.KorzenGango}).bindPopup("Korzeń Gango")
+        ],
+        Bez: [
+            L.marker([600, 600], {icon: plantIcons.Bez}).bindPopup("Bez")
+        ],
+        KwiatKaki: [
+            L.marker([800, 800], {icon: plantIcons.KwiatKaki}).bindPopup("Kwiat Kaki")
         ],
         Chests: [
             L.marker([206, 551], {icon: chestIcon}).bindPopup("Skrzynia 1"),
@@ -218,8 +232,12 @@
     document.getElementById('toggleMetin40').addEventListener('change', () => toggleMarkers('Metin40'));
     document.getElementById('toggleMetin45').addEventListener('change', () => toggleMarkers('Metin45'));
     document.getElementById('toggleMetin50').addEventListener('change', () => toggleMarkers('Metin50'));
-    document.getElementById('toggleBrzoskwinia').addEventListener('change', () => toggleMarkers('Plants'));
-    document.getElementById('togglePokrzywa').addEventListener('change', () => toggleMarkers('Plants'));
+    document.getElementById('toggleBrzoskwinia').addEventListener('change', () => toggleMarkers('Brzoskwinia'));
+    document.getElementById('togglePokrzywa').addEventListener('change', () => toggleMarkers('Pokrzywa'));
+    document.getElementById('toggleKorzenWeza').addEventListener('change', () => toggleMarkers('KorzenWeza'));
+    document.getElementById('toggleKorzenGango').addEventListener('change', () => toggleMarkers('KorzenGango'));
+    document.getElementById('toggleBez').addEventListener('change', () => toggleMarkers('Bez'));
+    document.getElementById('toggleKwiatKaki').addEventListener('change', () => toggleMarkers('KwiatKaki'));
     document.getElementById('toggleChests').addEventListener('change', () => toggleMarkers('Chests'));
     document.getElementById('toggleEmir').addEventListener('change', () => toggleMarkers('Emir'));
     document.getElementById('toggleTarantula').addEventListener('change', () => toggleMarkers('Tarantula'));
