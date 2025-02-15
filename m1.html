@@ -99,7 +99,6 @@
     <div id="rosliny" class="tab-content">
         <label><input type="checkbox" id="toggleBrzoskwinia"> Brzoskwinia</label>
         <label><input type="checkbox" id="togglePokrzywa"> Pokrzywa</label>
-        <label><input type="checkbox" id="toggleKorzenWeza"> Korzeń Węża</label>
         <label><input type="checkbox" id="toggleKorzenGango"> Korzeń Gango</label>
         <label><input type="checkbox" id="toggleBez"> Bez</label>
         <label><input type="checkbox" id="toggleKwiatKaki"> Kwiat Kaki</label>
@@ -114,7 +113,8 @@
         <label><input type="checkbox" id="toggleMuRang"> Mu Rang</label>
         <label><input type="checkbox" id="toggleJugHyui"> Jug Hyui</label>
         <label><input type="checkbox" id="toggleJoungYi"> Joung Yi</label>
-        <label><input type="checkbox" id="toggleLiAnBera"> Li An Bera</label>
+        <label><input type="checkbox" id="toggleLiAn"> Li An</label>
+        <label><input type="checkbox" id="toggleBera"> Bera</label>
         <label><input type="checkbox" id="toggleLykos"> Lykos</label>
         <label><input type="checkbox" id="toggleScrofa"> Scrofa</label>
         <label><input type="checkbox" id="toggleTigris"> Tigris</label>
@@ -141,13 +141,19 @@
 <div><span class="legend-icon" style="background-color: #ff69b4;"></span> Metin50</div>
 <div><span class="legend-icon" style="background-color: #f8c8d8;"></span> Brzoskwinia</div>
 <div><span class="legend-icon" style="background-color: darkgreen;"></span> Pokrzywa</div>
-<div><span class="legend-icon" style="background-color: #b8860b"></span> Korzeń Węża</div>
 <div><span class="legend-icon" style="background-color: #ff8c00"></span> Korzeń Gango</div>
 <div><span class="legend-icon" style="background-color: black;"></span> Bez</div>
 <div><span class="legend-icon" style="background-color: yellow;"></span> Kwiat Kaki</div>
 <div><span class="legend-icon-square" style="background-color: brown;"></span> Skrzynia</div>
-<div><span class="legend-icon" style="background-color: red;"></span> Emir</div>
-<div><span class="legend-icon" style="background-color: #fffffe;"></span> Tarantula</div>
+<div><span class="legend-icon" style="background-color: red;"></span> Cung Mok</div>
+<div><span class="legend-icon" style="background-color: #fffffe;"></span> Mu Rang</div>
+ <div><span class="legend-icon" style="background-color: #fffffe;"></span> Jug Hyui</div>
+ <div><span class="legend-icon" style="background-color: #fffffe;"></span> Joung Yi</div>
+ <div><span class="legend-icon" style="background-color: #fffffe;"></span> Li An</div>
+ <div><span class="legend-icon" style="background-color: #fffffe;"></span> Bera</div>
+  <div><span class="legend-icon" style="background-color: #fffffe;"></span> Lykos</div>
+ <div><span class="legend-icon" style="background-color: #fffffe;"></span> Scrofa</div>
+ <div><span class="legend-icon" style="background-color: #fffffe;"></span> Tigris</div>
 
 </div>
 
@@ -160,19 +166,17 @@
 
     // Ikony markerów
     var metin5Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: purple; border-radius: 50%;"></div>'});
-var metin10Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: blue; border-radius: 50%;"></div>'});
-var metin15Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #ff69b4; border-radius: 50%;"></div>'});
-var metin20Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #ff69b4; border-radius: 50%;"></div>'});
+    var metin10Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: blue; border-radius: 50%;"></div>'});
+    var metin15Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #ff69b4; border-radius: 50%;"></div>'});
+    var metin20Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #ff69b4; border-radius: 50%;"></div>'});
 
-    
-var brzoskwiniaIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #f8c8d8; border-radius: 50%;"></div>'});
-var pokrzywaIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: darkgreen; border-radius: 50%;"></div>'});
-var korzenWezaIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #b8860b; border-radius: 50%;"></div>'});
-var korzenGangoIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #ff8c00; border-radius: 50%;"></div>'});
-var bezIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: black; border-radius: 50%;"></div>'});
-var kwiatKakiIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: yellow; border-radius: 50%;"></div>'});
+    var brzoskwiniaIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #f8c8d8; border-radius: 50%;"></div>'});
+    var pokrzywaIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: darkgreen; border-radius: 50%;"></div>'});
+    var korzenGangoIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #ff8c00; border-radius: 50%;"></div>'});
+    var bezIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: black; border-radius: 50%;"></div>'});
+    var kwiatKakiIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: yellow; border-radius: 50%;"></div>'});
 
-var chestIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 30px; height: 30px; background-color: brown; border-radius: 5px;"></div>'});
+    var chestIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 30px; height: 30px; background-color: brown; border-radius: 5px;"></div>'});
 
     var markers = {
         Metin5: [
@@ -197,9 +201,6 @@ var chestIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 3
         Pokrzywa: [
             L.marker([700, 700], {icon: pokrzywaIcon}).bindPopup("Pokrzywa"),
             L.marker([710, 710], {icon: pokrzywaIcon}).bindPopup("Pokrzywa")
-        ],
-        KorzenWeza: [
-            L.marker([300, 300], {icon: korzenWezaIcon}).bindPopup("Korzeń Węża")
         ],
         KorzenGango: [
             L.marker([400, 400], {icon: korzenGangoIcon}).bindPopup("Korzeń Gango")
@@ -268,14 +269,23 @@ function toggleMarkers(id) {
     document.getElementById('toggleMetin20').addEventListener('change', () => toggleMarkers('Metin20'));
     document.getElementById('toggleBrzoskwinia').addEventListener('change', () => toggleMarkers('Brzoskwinia'));
     document.getElementById('togglePokrzywa').addEventListener('change', () => toggleMarkers('Pokrzywa'));
-    document.getElementById('toggleKorzenWeza').addEventListener('change', () => toggleMarkers('KorzenWeza'));
     document.getElementById('toggleKorzenGango').addEventListener('change', () => toggleMarkers('KorzenGango'));
     document.getElementById('toggleBez').addEventListener('change', () => toggleMarkers('Bez'));
     document.getElementById('toggleKwiatKaki').addEventListener('change', () => toggleMarkers('KwiatKaki'));
     document.getElementById('toggleChests').addEventListener('change', () => toggleMarkers('Chests'));
+    document.getElementById('toggleCungMok').addEventListener('change', () => toggleMarkers('Cung Mok'));
+    document.getElementById('toggleMuRang').addEventListener('change', () => toggleMarkers('Mu Rang'));
+    document.getElementById('toggleJugHyui').addEventListener('change', () => toggleMarkers('Jug Hyui'));
+    document.getElementById('toggleJoungYi').addEventListener('change', () => toggleMarkers('Joung Yi'));
+    document.getElementById('toggleLiAn').addEventListener('change', () => toggleMarkers('Li An'));
+    document.getElementById('toggleBera').addEventListener('change', () => toggleMarkers('Bera'));
+    document.getElementById('toggleLykos').addEventListener('change', () => toggleMarkers('Lykos'));
+    document.getElementById('toggleScrofa').addEventListener('change', () => toggleMarkers('Scrofa'));
+    document.getElementById('toggleTigris').addEventListener('change', () => toggleMarkers('Tigris'));
+
+
+
     
-    document.getElementById('toggleEmir').addEventListener('change', () => toggleMarkers('Emir'));
-    document.getElementById('toggleTarantula').addEventListener('change', () => toggleMarkers('Tarantula'));
 
     // Funkcja do przełączania zakładek
     function showTab(tabId) {
