@@ -90,9 +90,9 @@
     </ul>
 
     <div id="metiny" class="tab-content">
-        <label><input type="checkbox" id="toggleMetin40"> Metin40</label>
-        <label><input type="checkbox" id="toggleMetin45"> Metin45</label>
-        <label><input type="checkbox" id="toggleMetin50"> Metin50</label>
+        <label><input type="checkbox" id="toggleMetin55"> Metin55</label>
+        <label><input type="checkbox" id="toggleMetin60"> Metin60</label>
+        <label><input type="checkbox" id="toggleMetin65"> Metin65</label>
     </div>
 
     <div id="rosliny" class="tab-content">
@@ -111,6 +111,7 @@
     <div id="bossy" class="tab-content">
         <label><input type="checkbox" id="toggleEzoterycznyOstrzowiec"> EzoterycznyOstrzowiec</label>
         <label><input type="checkbox" id="toggleOpiekunHwang"> OpiekunHwang</label>
+        <label><input type="checkbox" id="toggleEzotPrzywolywacz"> EzotPrzywolywacz</label>
     </div>
 </div>
 
@@ -129,9 +130,9 @@
 
 <div id="legend">
     <strong>Legenda</strong>
-<div><span class="legend-icon" style="background-color: purple;"></span> Metin40</div>
-<div><span class="legend-icon" style="background-color: blue;"></span> Metin45</div>
-<div><span class="legend-icon" style="background-color: #ff69b4;"></span> Metin50</div>
+<div><span class="legend-icon" style="background-color: purple;"></span> Metin55</div>
+<div><span class="legend-icon" style="background-color: blue;"></span> Metin60</div>
+<div><span class="legend-icon" style="background-color: #ff69b4;"></span> Metin65</div>
 <div><span class="legend-icon" style="background-color: #f8c8d8;"></span> Brzoskwinia</div>
 <div><span class="legend-icon" style="background-color: darkgreen;"></span> Pokrzywa</div>
 <div><span class="legend-icon" style="background-color: #b8860b"></span> Korzeń Węża</div>
@@ -141,6 +142,7 @@
 <div><span class="legend-icon-square" style="background-color: brown;"></span> Skrzynia</div>
 <div><span class="legend-icon" style="background-color: red;"></span> EzoterycznyOstrzowiec</div>
 <div><span class="legend-icon" style="background-color: #fffffe;"></span> OpiekunHwang</div>
+<div><span class="legend-icon" style="background-color: #fffffe;"></span> EzotPrzywolywacz</div>    
 
 </div>
 
@@ -152,9 +154,9 @@
     map.fitBounds(bounds);
 
     // Ikony markerów
-    var metin40Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: purple; border-radius: 50%;"></div>'});
-var metin45Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: blue; border-radius: 50%;"></div>'});
-var metin50Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #ff69b4; border-radius: 50%;"></div>'});
+    var metin55Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: purple; border-radius: 50%;"></div>'});
+var metin60Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: blue; border-radius: 50%;"></div>'});
+var metin65Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #ff69b4; border-radius: 50%;"></div>'});
 
 var brzoskwiniaIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #f8c8d8; border-radius: 50%;"></div>'});
 var pokrzywaIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: darkgreen; border-radius: 50%;"></div>'});
@@ -176,28 +178,28 @@ var kwiatKakiIcon = L.divIcon({className: 'custom-icon', html: '<div style="widt
         Metin65: [
         ],
         Brzoskwinia: [
-            L.marker([500, 500], {icon: brzoskwiniaIcon}).bindPopup("Brzoskwinia"),
-            L.marker([510, 510], {icon: brzoskwiniaIcon}).bindPopup("Brzoskwinia")
+            //L.marker([500, 500], {icon: brzoskwiniaIcon}).bindPopup("Brzoskwinia"),
+            //L.marker([510, 510], {icon: brzoskwiniaIcon}).bindPopup("Brzoskwinia")
         ],
         Pokrzywa: [
-            L.marker([700, 700], {icon: pokrzywaIcon}).bindPopup("Pokrzywa"),
-            L.marker([710, 710], {icon: pokrzywaIcon}).bindPopup("Pokrzywa")
+            //L.marker([700, 700], {icon: pokrzywaIcon}).bindPopup("Pokrzywa"),
+            //L.marker([710, 710], {icon: pokrzywaIcon}).bindPopup("Pokrzywa")
         ],
         KorzenWeza: [
-            L.marker([300, 300], {icon: korzenWezaIcon}).bindPopup("Korzeń Węża")
+          //  L.marker([300, 300], {icon: korzenWezaIcon}).bindPopup("Korzeń Węża")
         ],
         KorzenGango: [
-            L.marker([400, 400], {icon: korzenGangoIcon}).bindPopup("Korzeń Gango")
+           // L.marker([400, 400], {icon: korzenGangoIcon}).bindPopup("Korzeń Gango")
         ],
         Bez: [
-            L.marker([600, 600], {icon: bezIcon}).bindPopup("Bez")
+           // L.marker([600, 600], {icon: bezIcon}).bindPopup("Bez")
         ],
         KwiatKaki: [
-            L.marker([800, 800], {icon: kwiatKakiIcon}).bindPopup("Kwiat Kaki")
+          //  L.marker([800, 800], {icon: kwiatKakiIcon}).bindPopup("Kwiat Kaki")
         ],
         Chests: [
-            L.marker([206, 551], {icon: chestIcon}).bindPopup("Skrzynia 1"),
-            L.marker([240, 765], {icon: chestIcon}).bindPopup("Skrzynia 2"),
+         //   L.marker([206, 551], {icon: chestIcon}).bindPopup("Skrzynia 1"),
+         //   L.marker([240, 765], {icon: chestIcon}).bindPopup("Skrzynia 2"),
         ],
         EzoterycznyOstrzowiec: [
             L.circle([312, 155], {radius: 150, color: 'black', fillColor: 'black', fillOpacity: 0.2}).bindPopup("EzoterycznyOstrzowiec"),
@@ -206,9 +208,12 @@ var kwiatKakiIcon = L.divIcon({className: 'custom-icon', html: '<div style="widt
         ],
         OpiekunHwang: [
             L.circle([410, 897], {radius: 150, color: 'black', fillColor: 'black', fillOpacity: 0.2}).bindPopup("OpiekunHwang"),
-            
-
-        ]
+        ],
+        EzotPrzywolywacz: [
+            L.circle([410, 897], {radius: 150, color: 'black', fillColor: 'black', fillOpacity: 0.2}).bindPopup("EzotPrzywolywacz"),
+        ],
+        
+        
     };
 
     // Funkcja do przełączania markerów
@@ -221,9 +226,9 @@ var kwiatKakiIcon = L.divIcon({className: 'custom-icon', html: '<div style="widt
     }
 
     // Nasłuchiwanie zdarzeń checkboxów
-    document.getElementById('toggleMetin40').addEventListener('change', () => toggleMarkers('Metin40'));
-    document.getElementById('toggleMetin45').addEventListener('change', () => toggleMarkers('Metin45'));
-    document.getElementById('toggleMetin50').addEventListener('change', () => toggleMarkers('Metin50'));
+    document.getElementById('toggleMetin55').addEventListener('change', () => toggleMarkers('Metin55'));
+    document.getElementById('toggleMetin60').addEventListener('change', () => toggleMarkers('Metin60'));
+    document.getElementById('toggleMetin65').addEventListener('change', () => toggleMarkers('Metin65'));
     document.getElementById('toggleBrzoskwinia').addEventListener('change', () => toggleMarkers('Brzoskwinia'));
     document.getElementById('togglePokrzywa').addEventListener('change', () => toggleMarkers('Pokrzywa'));
     document.getElementById('toggleKorzenWeza').addEventListener('change', () => toggleMarkers('KorzenWeza'));
@@ -233,6 +238,7 @@ var kwiatKakiIcon = L.divIcon({className: 'custom-icon', html: '<div style="widt
     document.getElementById('toggleChests').addEventListener('change', () => toggleMarkers('Chests'));
     document.getElementById('toggleEzoterycznyOstrzowiec').addEventListener('change', () => toggleMarkers('EzoterycznyOstrzowiec'));
     document.getElementById('toggleOpiekunHwang').addEventListener('change', () => toggleMarkers('OpiekunHwang'));
+    document.getElementById('toggleEzotPrzywolywacz').addEventListener('change', () => toggleMarkers('EzotPrzywolywacz'));
 
     // Funkcja do przełączania zakładek
     function showTab(tabId) {
