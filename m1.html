@@ -94,6 +94,7 @@
         <label><input type="checkbox" id="toggleMetin10"> Metin10</label>
         <label><input type="checkbox" id="toggleMetin15"> Metin15</label>
         <label><input type="checkbox" id="toggleMetin20"> Metin20</label>
+        <label><input type="checkbox" id="toggleMetin20"> Metin25</label>
     </div>
 
     <div id="rosliny" class="tab-content">
@@ -136,19 +137,22 @@
 
 <div id="legend">
     <strong>Legenda</strong>
-<div><span class="legend-icon" style="background-color: purple;"></span> Metin40</div>
-<div><span class="legend-icon" style="background-color: blue;"></span> Metin45</div>
-<div><span class="legend-icon" style="background-color: #ff69b4;"></span> Metin50</div>
+<div><span class="legend-icon" style="background-color: ##0cdc00;"></span> Metin5</div>
+<div><span class="legend-icon" style="background-color: #0cddaf;"></span> Metin10</div>
+<div><span class="legend-icon" style="background-color: #fada5e;"></span> Metin15</div>
+<div><span class="legend-icon" style="background-color: pink;"></span> Metin20</div> 
+<div><span class="legend-icon" style="background-color: #8b0000;"></span> Metin25</div>     
 <div><span class="legend-icon" style="background-color: #f8c8d8;"></span> Brzoskwinia</div>
 <div><span class="legend-icon" style="background-color: darkgreen;"></span> Pokrzywa</div>
 <div><span class="legend-icon" style="background-color: #ff8c00"></span> Korzeń Gango</div>
 <div><span class="legend-icon" style="background-color: black;"></span> Bez</div>
-<div><span class="legend-icon" style="background-color: yellow;"></span> Kwiat Kaki</div>
+<div><span class="legend-icon" style="background-color: #FDFF00;"></span> Kwiat Kaki</div>
 <div><span class="legend-icon-square" style="background-color: brown;"></span> Skrzynia</div>
-<div><span class="legend-icon" style="background-color: red;"></span> Cung Mok</div>
-<div><span class="legend-icon" style="background-color: #fffffe;"></span> Mu Rang</div>
- <div><span class="legend-icon" style="background-color: #fffffe;"></span> Jug Hyui</div>
- <div><span class="legend-icon" style="background-color: #fffffe;"></span> Joung Yi</div>
+    
+<div><span class="legend-icon" style="background-color: #98ff98;"></span> Cung Mok</div>
+<div><span class="legend-icon" style="background-color: #013220;"></span> Mu Rang</div>
+ <div><span class="legend-icon" style="background-color: #a67b5b;"></span> Jug Hyui</div>
+ <div><span class="legend-icon" style="background-color: #8b5a2b;"></span> Joung Yi</div>
  <div><span class="legend-icon" style="background-color: #fffffe;"></span> Li An</div>
  <div><span class="legend-icon" style="background-color: #fffffe;"></span> Bera</div>
   <div><span class="legend-icon" style="background-color: #fffffe;"></span> Lykos</div>
@@ -165,16 +169,17 @@
     map.fitBounds(bounds);
 
     // Ikony markerów
-    var metin5Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: purple; border-radius: 50%;"></div>'});
-    var metin10Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: blue; border-radius: 50%;"></div>'});
-    var metin15Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #ff69b4; border-radius: 50%;"></div>'});
-    var metin20Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #ff69b4; border-radius: 50%;"></div>'});
+    var metin5Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #0cdc00; border-radius: 50%;"></div>'});
+    var metin10Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #0cddaf; border-radius: 50%;"></div>'});
+    var metin15Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #fada5e; border-radius: 50%;"></div>'});
+    var metin20Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: pink; border-radius: 50%;"></div>'});
+    var metin25Icon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #8b0000; border-radius: 50%;"></div>'});
 
     var brzoskwiniaIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #f8c8d8; border-radius: 50%;"></div>'});
     var pokrzywaIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: darkgreen; border-radius: 50%;"></div>'});
     var korzenGangoIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #ff8c00; border-radius: 50%;"></div>'});
     var bezIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: black; border-radius: 50%;"></div>'});
-    var kwiatKakiIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: yellow; border-radius: 50%;"></div>'});
+    var kwiatKakiIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 24px; height: 24px; background-color: #FDFF00; border-radius: 50%;"></div>'});
 
     var chestIcon = L.divIcon({className: 'custom-icon', html: '<div style="width: 30px; height: 30px; background-color: brown; border-radius: 5px;"></div>'});
 
@@ -214,20 +219,20 @@
             L.marker([931, 286], {icon: chestIcon}).bindPopup("Skrzynia 1"),
         ],
         CungMok: [
-            L.circle([612, 804], { radius: 50, color: 'red', fillColor: 'red', fillOpacity: 0.2 }).bindPopup("Cung Mok"),
+            L.circle([612, 804], { radius: 50, color: '#98ff98', fillColor: '#98ff98', fillOpacity: 0.2 }).bindPopup("Cung Mok"),
         ],
         MuRang: [
-            L.circle([790, 890], { radius: 150, color: 'green', fillColor: 'green', fillOpacity: 0.2 }).bindPopup("Mu Rang"),
+            L.circle([790, 890], { radius: 150, color: '#013220', fillColor: '#013220', fillOpacity: 0.2 }).bindPopup("Mu Rang"),
         ],
         JugHyui: [
-            L.circle([604, 187], { radius: 100, color: 'blue', fillColor: 'blue', fillOpacity: 0.2 }).bindPopup("Jug Hyui"),
-            L.circle([271, 580], { radius: 150, color: 'blue', fillColor: 'blue', fillOpacity: 0.2 }).bindPopup("Jug Hyui"),
+            L.circle([604, 187], { radius: 100, color: '#a67b5b', fillColor: '#a67b5b', fillOpacity: 0.2 }).bindPopup("Jug Hyui"),
+            L.circle([271, 580], { radius: 150, color: '#a67b5b', fillColor: '#a67b5b', fillOpacity: 0.2 }).bindPopup("Jug Hyui"),
             
         ],
         JoungYi: [
-            L.circle([838, 467], { radius: 100, color: 'purple', fillColor: 'purple', fillOpacity: 0.2 }).bindPopup("Joung Yi"),
-            L.circle([263, 344], { radius: 100, color: 'purple', fillColor: 'purple', fillOpacity: 0.2 }).bindPopup("Joung Yi"),
-            L.circle([341, 804], { radius: 100, color: 'purple', fillColor: 'purple', fillOpacity: 0.2 }).bindPopup("Joung Yi"),
+            L.circle([838, 467], { radius: 100, color: '8b5a2b', fillColor: '8b5a2b', fillOpacity: 0.2 }).bindPopup("Joung Yi"),
+            L.circle([263, 344], { radius: 100, color: '8b5a2b', fillColor: '8b5a2b', fillOpacity: 0.2 }).bindPopup("Joung Yi"),
+            L.circle([341, 804], { radius: 100, color: '8b5a2b', fillColor: '8b5a2b', fillOpacity: 0.2 }).bindPopup("Joung Yi"),
         ],
         LiAn: [
             L.circle([604, 187], { radius: 100, color: 'orange', fillColor: 'orange', fillOpacity: 0.2 }).bindPopup("Li An"),
