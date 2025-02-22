@@ -94,7 +94,7 @@
         <label><input type="checkbox" id="toggleMetin10"> Metin10</label>
         <label><input type="checkbox" id="toggleMetin15"> Metin15</label>
         <label><input type="checkbox" id="toggleMetin20"> Metin20</label>
-        <label><input type="checkbox" id="toggleMetin20"> Metin25</label>
+        <label><input type="checkbox" id="toggleMetin25"> Metin25</label>
     </div>
 
     <div id="rosliny" class="tab-content">
@@ -213,6 +213,9 @@
         Metin20: [
             L.marker([909, 254], {icon: metin20Icon}).bindPopup("Metin15-1"),
         ],
+        Metin25: [
+           // L.marker([909, 254], {icon: metin25Icon}).bindPopup("Metin15-1"),
+        ],
 
         
         Brzoskwinia: [
@@ -277,6 +280,7 @@ function toggleMarkers(id) {
     document.getElementById('toggleMetin10').addEventListener('change', () => toggleMarkers('Metin10'));
     document.getElementById('toggleMetin15').addEventListener('change', () => toggleMarkers('Metin15'));
     document.getElementById('toggleMetin20').addEventListener('change', () => toggleMarkers('Metin20'));
+    document.getElementById('toggleMetin20').addEventListener('change', () => toggleMarkers('Metin25'));
     document.getElementById('toggleBrzoskwinia').addEventListener('change', () => toggleMarkers('Brzoskwinia'));
     document.getElementById('togglePokrzywa').addEventListener('change', () => toggleMarkers('Pokrzywa'));
     document.getElementById('toggleKorzenGango').addEventListener('change', () => toggleMarkers('KorzenGango'));
